@@ -48,8 +48,12 @@ if(isset($_POST['username']) &&
             $_SESSION['name'] = $user['name'];
             $_SESSION['user_id'] = $user['user_id'];
 
-            # redirect to 'home.php'
-            header("Location: ../../home.php");
+            # redirect to 'home.php' or 'home-admin'
+            if (is_numeric($_SESSION['username'])){
+              header("Location: ../../home.php");
+            }else{
+              header("Location: ../../home-admin.php");
+            }
 
           }else {
             # error message
