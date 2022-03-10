@@ -4,11 +4,12 @@ if (isset($_SESSION['username'])) {
  # database connection file
  include 'app/db.conn.php';
 
- // include 'app/helpers/user.php';
- // include 'app/helpers/chat.php';
- // include 'app/helpers/opened.php';
+ include 'app/helpers/user.php';
+ include 'app/helpers/chat.php';
+ include 'app/helpers/opened.php';
 
- // include 'app/helpers/timeAgo.php';
+ include 'app/helpers/timeAgo.php';
+
  ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -40,6 +41,7 @@ if (isset($_SESSION['username'])) {
 		<div class="container">
 			<div class="row m-auto p-0">
 				<div class="row justify-content-center">
+					<!-- card 1 -->
 					<div
 						class="card card-custom bg-white border-white border-0 col-xl-3 col-lg-4 col-md-6 col-xs-12 mx-3 mb-4 p-0"
 						style="height: 450px"
@@ -68,7 +70,7 @@ if (isset($_SESSION['username'])) {
 							class="card-footer"
 							style="background: inherit; border-color: inherit"
 						>
-							<a href="#" class="btn btn-primary">Chat</a>
+							<a href="chat.php?user=lenguasextranjeras" class="btn btn-primary">Chat</a>
 						</div>
 					</div>
 					<div
@@ -247,6 +249,9 @@ if (isset($_SESSION['username'])) {
 			</div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 	</body>
 </html>
 <?php
