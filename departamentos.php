@@ -23,13 +23,13 @@ if (isset($_SESSION['username'])) {
 			integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="css/style.css" />
-		<link rel="stylesheet" href="css/cards.css" />
-		<link rel="icon" href="img/logo-buho.png" />
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 		/>
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/cards.css" />
+		<link rel="icon" href="img/logo-buho.png" />
 	</head>
 	<body>
 		<?php include "sections/header.php"?>
