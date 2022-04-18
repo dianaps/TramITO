@@ -86,11 +86,16 @@ textarea {
 	resize: none;
 }
 
-.logo-image{
+.logo-image-buho{
     width: 46px;
-    height: 46px;
-    border-radius: 50%;
+    /* height: 46px; */
     overflow: hidden;
     margin-top: -6px;
+}
+
+.logo-image-nombre {
+	width: 60px;
+	overflow: hidden;
+	/* margin-top: -6px; */
 }
 /*message_status*/

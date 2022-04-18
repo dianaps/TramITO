@@ -4,7 +4,7 @@
     position: fixed !important;
     display: flex;
     align-items: center;
-    height: 62px;
+    /* height: 62px; */
     width: 100%;
     white-space: nowrap;
     flex-shrink: 0;
@@ -68,10 +68,13 @@
       </button>
       <div class="collapse navbar-collapse" id="menu">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-nav-scroll">
-        <li class="nav-item logo-image">
-            <img src="img/logo.png" class="img-fluid">
-        </li>
-        <li class="nav-item active">
+          <li class="nav-item logo-image-buho">
+              <img src="img/logo-buho.png" class="img-fluid">
+          </li>
+          <li class="nav-item logo-image-nombre">
+              <img src="img/logo-nombre.png" class="img-fluid">
+          </li>
+          <li class="nav-item active">
             <a class="nav-link" aria-current="page" href="home.php">Home</a>
           </li>
           <li class="nav-item">
@@ -84,7 +87,7 @@
             <a class="nav-link" href="#">Contacto</a>
           </li>
           <!-- <li class="nav-item">
-            <img src="uploads/<?=$user['p_p']?>"
+            <img src="uploads/<?//$user['p_p']?>"
     			         class="w-25 rounded-circle" alt="">
              <a class="nav-link" href="#">Contacto</a>
           </li> -->
