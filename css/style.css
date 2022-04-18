@@ -88,14 +88,13 @@ textarea {
 
 .logo-image-buho{
     width: 46px;
-    /* height: 46px; */
+	margin: auto 0;
     overflow: hidden;
-    margin-top: -6px;
 }
 
 .logo-image-nombre {
-	width: 60px;
+	width: 70px;
+	margin: auto 0;
 	overflow: hidden;
-	/* margin-top: -6px; */
 }
 /*message_status*/
