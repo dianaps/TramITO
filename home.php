@@ -10,7 +10,7 @@ if (isset($_SESSION['username'])) {
 
  include 'app/helpers/timeAgo.php';
 
- # Getting User data data
+ # Getting User data data, get chat with xoochbot
  $chatWith = getUser('xoochbot', $conn);
 
  if (empty($chatWith)) {
@@ -39,7 +39,8 @@ if (isset($_SESSION['username'])) {
 	<?php include "sections/header.php"?>
 	<!-- Encabezado -->
 	<div id class="p-5 text-center bg-light">
-		<h1 class="mb-3">TramITO</h1>
+		<!-- <h1 class="mb-3">TramITO</h1> -->
+		<img src="img/logo-nombre.png" class="img-fluid" alt="">
 	</div>
 	<!-- Encabezado -->
 
