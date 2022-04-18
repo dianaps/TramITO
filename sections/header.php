@@ -1,5 +1,21 @@
 
 <style>
+  nav {
+    position: fixed !important;
+    display: flex;
+    align-items: center;
+    height: 62px;
+    width: 100%;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-weight: 600;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(44, 45, 42, 0.25);
+    top: 0;
+    left: 0;
+    background-color: var(--beach-bg);
+    z-index: 6;
+  }
   .hamburguer{
     background-color: transparent;
     border: none;
