@@ -26,11 +26,11 @@ if (!isset($_SESSION['username'])) {
 	 		            align-items-center
 	 		            flex-column">
 
-	 		<img src="img/logo.png"
-	 		     class="w-25">
-	 		<h3 class="display-4 fs-1
-	 		           text-center">
-	 			       Login</h3>
+				<img src="img/logo-100.png"
+					class="img-fluid">
+				<h3 class="display-4 fs-1
+						text-center">
+						Login</h3>
 
 
 	 		</div>
