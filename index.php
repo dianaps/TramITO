@@ -18,6 +18,8 @@ if (!isset($_SESSION['username'])) {
              justify-content-center
              align-items-center
              vh-100">
+
+	 <div class="login-image"></div>
 	 <div class="w-400 p-5 shadow rounded">
 	 	<form method="post"
 	 	      action="app/http/auth.php">
@@ -63,9 +65,11 @@ if (!isset($_SESSION['username'])) {
 
 		  <button type="submit"
 		          class="btn btn-primary">
-		          LOGIN</button>
+		          Login</button>
 		  <a href="signup.php">Sign Up</a>
 		</form>
+		<br>
+		<a href="restore-password.php">¿Olvidó su contraseña?</a>
 	 </div>
 </body>
 </html>
