@@ -4,11 +4,34 @@ body {
 	padding-top: 65px;
 	font-family: 'Source Sans Pro',
 	sans-serif;
+	/* background: linear-gradient(
+		to bottom right,
+		#09cec1, #001324
+	); */
 }
 
 h1, h2, h3, h4, h5, h6{
 	font-family: 'Montserrat',
 	sans-serif;
+}
+
+.login-image {
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	margin: 0;
+	top: 0;
+	background: linear-gradient(to bottom right,
+		#052d2a, #000000);
+	background-image: url("../img/image-login.jpg");
+	filter: blur(1.5px);
+	-webkit-filter: blur(1.5px);
+	background-repeat: no-repeat;
+	
+	background-position: center;
+	background-size: cover;
+	background-position-y: bottom;
 }
 
 .vh-100 {
