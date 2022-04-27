@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Chat App - Sign Up</title>
+	<title>TramITO - Sign Up</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	<link rel="stylesheet"
 	      href="css/style.css">
@@ -53,6 +53,12 @@ if (!isset($_SESSION['username'])) {
   $username = '';
  }
 
+ if (isset($_GET['email'])) {
+  $email = $_GET['email'];
+ } else {
+  $email = '';
+ }
+
  ?>
 
 	 	  <div class="mb-3">
@@ -71,6 +77,15 @@ if (!isset($_SESSION['username'])) {
 		           class="form-control"
 		           value="<?=$username?>"
 		           name="username">
+		  </div>
+
+		  <div class="mb-3">
+		    <label class="form-label">
+		           Email</label>
+		    <input type="email"
+		           class="form-control"
+		           value="<?=$email?>"
+		           name="email">
 		  </div>
 
 
