@@ -139,7 +139,7 @@ if (isset($_POST['username']) &&
    }
 
    # success message
-   $sm =
+   $sm = Messages::SCS_CREATION_ACCOUNT;
 
    # redirect to 'index.php' and passing success message
    header("Location: ../../index.php?success=$sm");
