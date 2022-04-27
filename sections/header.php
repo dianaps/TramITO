@@ -69,22 +69,22 @@
       <div class="collapse navbar-collapse" id="menu">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-nav-scroll">
           <li class="nav-item logo-image-buho">
-              <img src="img/logo-buho.png" class="img-fluid">
+              <a class="nav-link" aria-current="page" href="home.php"><img src="img/logo-buho.png" class="img-fluid"></a>
           </li>
           <li class="nav-item logo-image-nombre">
-              <img src="img/logo-nombre.png" class="img-fluid">
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" aria-current="page" href="home.php">Home</a>
+              <a class="nav-link" aria-current="page" href="home.php"><img src="img/logo-nombre.png" class="img-fluid"></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Chatbot</a>
+            <a class="nav-link" href="chatbot.php">Chatbot</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="departamentos.php">Departamentos</a>
           </li>
+           <li class="nav-item">
+            <a class="nav-link" href="update-password.php">Mi perfil</a>
+          </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contacto</a>
+            <a class="nav-link" href="about.php">Contacto</a>
           </li>
           <!-- <li class="nav-item">
             <img src="uploads/<?//$user['p_p']?>"
