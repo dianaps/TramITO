@@ -10,7 +10,7 @@ function last_seen($date_time)
 
  $timestamp = strtotime($date_time);
 
- $strTime = array("second", "minute", "hour", "day", "month", "year");
+ $strTime = array("segundos", "minutos", "hora", "día", "mes", "año");
  $length  = array("60", "60", "24", "30", "12", "10");
 
  $currentTime = time();
@@ -21,10 +21,10 @@ function last_seen($date_time)
   }
 
   $diff = round($diff);
-  if ($diff < 59 && $strTime[$i] == "second") {
+  if ($diff < 59 && $strTime[$i] == "segundo") {
    return 'Active';
   } else {
-   return $diff . " " . $strTime[$i] . "(s) ago ";
+   return "hace " . $diff . " " . $strTime[$i] . "(s)";
   }
 
  }
