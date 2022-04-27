@@ -7,8 +7,8 @@ if (isset($_SESSION['username'])) {
  include 'app/helpers/user.php';
  include 'app/helpers/chat.php';
  include 'app/helpers/opened.php';
-
  include 'app/helpers/timeAgo.php';
+ include 'app/constants/messages.php';
 
  if (!isset($_GET['user'])) {
   header("Location: home.php");
@@ -32,12 +32,13 @@ if (isset($_SESSION['username'])) {
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Chat App</title>
+	<title>TramITO</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	<link rel="stylesheet"
 	      href="css/style.css">
 	<link rel="icon" href="img/logo-buho.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/66b2a98c0c.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <?php include "sections/header.php"?>
@@ -46,8 +47,8 @@ if (isset($_SESSION['username'])) {
              justify-content-center
              align-items-center">
     <div class="w-400 shadow p-4 rounded">
-    	<a href="departamentos.php"
-    	   class="fs-4 link-dark">&#8592;</a>
+    	<a onclick = "window.history.back();"
+    	   class="fs-4 link-dark btn"><span class="fa solid fa-arrow-left"></span></a>
 
     	   <div class="d-flex align-items-center">
     	   	  <img src="uploads/<?=$chatWith['p_p']?>"
@@ -62,10 +63,10 @@ if (isset($_SESSION['username'])) {
 if (last_seen($chatWith['last_seen']) == "Active") {
   ?>
                	        <div class="online"></div>
-               	        <small class="d-block p-1">Online</small>
+               	        <small class="d-block p-1"><?php echo Messages::STATUS_ONLINE; ?></small>
                	  	<?php } else {?>
                	         <small class="d-block p-1">
-               	         	Last seen:
+               	         	<?php echo Messages::LAST_SEEN; ?>
                	         	<?=last_seen($chatWith['last_seen'])?>
                	         </small>
                	  	<?php }?>
@@ -99,10 +100,10 @@ if (!empty($chats)) {
                     <?php }
   }
  } else {?>
-               <div class="alert alert-info
+                <div id="empty_chat" class="alert alert-info
     				            text-center">
 				   <i class="fa fa-comments d-block fs-big"></i>
-	               No messages yet, Start the conversation
+	               <?php echo Messages::EMPTY_MESSAGES; ?>
 			   </div>
     	   	<?php }?>
     	   </div>
