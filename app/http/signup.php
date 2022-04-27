@@ -1,143 +1,150 @@
-<?php  
+<?php
 
 # check if username, password, name submitted
-if(isset($_POST['username']) &&
-   isset($_POST['password']) &&
-   isset($_POST['name'])){
+if (isset($_POST['username']) &&
+ isset($_POST['password']) &&
+ isset($_POST['name']) &&
+ isset($_POST['email'])) {
 
-   # database connection file
-   include '../db.conn.php';
-   
-   # get data from POST request and store them in var
-   $name = $_POST['name'];
-   $password = $_POST['password'];
-   $username = $_POST['username'];
+ # database connection file
+ include '../db.conn.php';
 
-   # making URL data format
-   $data = 'name='.$name.'&username='.$username;
+ # get data from POST request and store them in var
+ $name     = $_POST['name'];
+ $password = $_POST['password'];
+ $username = $_POST['username'];
+ $email    = $_POST['email'];
 
-   #simple form Validation
-   if (empty($name)) {
-   	  # error message
-   	  $em = "Name is required";
+ # making URL data format
+ $data = 'name=' . $name . '&username=' . $username . '&email=' . $email;
 
-   	  # redirect to 'signup.php' and passing error message
-   	  header("Location: ../../signup.php?error=$em");
-   	  exit;
-   }else if(empty($username)){
-      # error message
-   	  $em = "Username is required";
+ #simple form Validation
+ if (empty($name)) {
+  # error message
+  $em = "El nombre es requerido";
 
-   	  /*
-    	redirect to 'signup.php' and 
-    	passing error message and data
-      */
-   	  header("Location: ../../signup.php?error=$em&$data");
-   	  exit;
-   }else if(empty($password)){
-   	  # error message
-   	  $em = "Password is required";
+  # redirect to 'signup.php' and passing error message
+  header("Location: ../../signup.php?error=$em");
+  exit;
+ } else if (empty($username)) {
+  # error message
+  $em = "El nombre de usuario es requerido";
 
-   	  /*
-    	redirect to 'signup.php' and 
-    	passing error message and data
-      */
-   	  header("Location: ../../signup.php?error=$em&$data");
-   	  exit;
-   }else {
-   	  # checking the database if the username is taken
-   	  $sql = "SELECT username 
+  /*
+  redirect to 'signup.php' and
+  passing error message and data
+   */
+  header("Location: ../../signup.php?error=$em&$data");
+  exit;
+
+ } else if (empty($email)) {
+  $em = "El correo es requerido";
+  header("Location: ../../signup.php?error=$em&$data");
+  exit;
+
+ } else if (empty($password)) {
+  # error message
+  $em = "La contraseña es requerida";
+
+  /*
+  redirect to 'signup.php' and
+  passing error message and data
+   */
+  header("Location: ../../signup.php?error=$em&$data");
+  exit;
+ } else {
+  # checking the database if the username is taken
+  $sql = "SELECT username
    	          FROM users
    	          WHERE username=?";
-      $stmt = $conn->prepare($sql);
-      $stmt->execute([$username]);
+  $stmt = $conn->prepare($sql);
+  $stmt->execute([$username]);
 
-      if($stmt->rowCount() > 0){
-      	$em = "The username ($username) is taken";
-      	header("Location: ../../signup.php?error=$em&$data");
-   	    exit;
-      }else {
-      	# Profile Picture Uploading
-      	if (isset($_FILES['pp'])) {
-      		# get data and store them in var
-      		$img_name  = $_FILES['pp']['name'];
-      		$tmp_name  = $_FILES['pp']['tmp_name'];
-      		$error  = $_FILES['pp']['error'];
+  if ($stmt->rowCount() > 0) {
+   $em = "The username ($username) is taken";
+   header("Location: ../../signup.php?error=$em&$data");
+   exit;
+  } else {
+   # Profile Picture Uploading
+   if (isset($_FILES['pp'])) {
+    # get data and store them in var
+    $img_name = $_FILES['pp']['name'];
+    $tmp_name = $_FILES['pp']['tmp_name'];
+    $error    = $_FILES['pp']['error'];
 
-      		# if there is not error occurred while uploading
-      		if($error === 0){
-               
-               # get image extension store it in var
-      		   $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+    # if there is not error occurred while uploading
+    if ($error === 0) {
 
-               /** 
-				convert the image extension into lower case 
-				and store it in var 
-				**/
-				$img_ex_lc = strtolower($img_ex);
+     # get image extension store it in var
+     $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
 
-				/** 
-				crating array that stores allowed
-				to upload image extension.
-				**/
-				$allowed_exs = array("jpg", "jpeg", "png");
+     /*
+     convert the image extension into lower case
+     and store it in var
+      */
+     $img_ex_lc = strtolower($img_ex);
 
-				/** 
-				check if the the image extension 
-				is present in $allowed_exs array
-				**/
-				if (in_array($img_ex_lc, $allowed_exs)) {
-					/** 
-					 renaming the image with user's username
-					 like: username.$img_ex_lc
-					**/
-					$new_img_name = $username. '.'.$img_ex_lc;
+     /*
+     crating array that stores allowed
+     to upload image extension.
+      */
+     $allowed_exs = array("jpg", "jpeg", "png");
 
-					# crating upload path on root directory
-					$img_upload_path = '../../uploads/'.$new_img_name;
+     /*
+     check if the the image extension
+     is present in $allowed_exs array
+      */
+     if (in_array($img_ex_lc, $allowed_exs)) {
+      /*
+      renaming the image with user's username
+      like: username.$img_ex_lc
+       */
+      $new_img_name = $username . '.' . $img_ex_lc;
 
-					# move uploaded image to ./upload folder
-                    move_uploaded_file($tmp_name, $img_upload_path);
-				}else {
-					$em = "Solo se admiten archivos JPG, JPEG y PNG";
-			      	header("Location: ../../signup.php?error=$em&$data");
-			   	    exit;
-				}
+      # crating upload path on root directory
+      $img_upload_path = '../../uploads/' . $new_img_name;
 
-      		}
-      	}
+      # move uploaded image to ./upload folder
+      move_uploaded_file($tmp_name, $img_upload_path);
+     } else {
+      $em = "Solo se admiten archivos JPG, JPEG y PNG";
+      header("Location: ../../signup.php?error=$em&$data");
+      exit;
+     }
 
-      	// password hashing
-      	$password = password_hash($password, PASSWORD_DEFAULT);
-
-      	# if the user upload Profile Picture
-      	if (isset($new_img_name)) {
-
-      		# inserting data into database
-            $sql = "INSERT INTO users
-                    (name, username, password, p_p)
-                    VALUES (?,?,?,?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute([$name, $username, $password, $new_img_name]);
-      	}else {
-            # inserting data into database
-            $sql = "INSERT INTO users
-                    (name, username, password)
-                    VALUES (?,?,?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute([$name, $username, $password]);
-      	}
-
-      	# success message
-      	$sm = "Cuenta creada exitosamente";
-
-      	# redirect to 'index.php' and passing success message
-      	header("Location: ../../index.php?success=$sm");
-     	exit;
-      }
-
+    }
    }
-}else {
-	header("Location: ../../signup.php");
-   	exit;
+
+   // password hashing
+   $password = password_hash($password, PASSWORD_DEFAULT);
+
+   # if the user upload Profile Picture
+   if (isset($new_img_name)) {
+
+    # inserting data into database
+    $sql = "INSERT INTO users
+                    (name, username, password, p_p, email)
+                    VALUES (?,?,?,?,?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$name, $username, $password, $new_img_name, $email]);
+   } else {
+    # inserting data into database
+    $sql = "INSERT INTO users
+                    (name, username, password, email)
+                    VALUES (?,?,?,?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$name, $username, $password, $email]);
+   }
+
+   # success message
+   $sm = "Cuenta creada exitosamente";
+
+   # redirect to 'index.php' and passing success message
+   header("Location: ../../index.php?success=$sm");
+   exit;
+  }
+ }
+} else {
+ header("Location: ../../signup.php");
+ exit;
 }
