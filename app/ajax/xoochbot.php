@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../constants/messages.php';
 
 if (isset($_SESSION['username'])) {
  include '../db.conn.php';
@@ -17,7 +18,7 @@ if (isset($_SESSION['username'])) {
   }
 
  } else {
-  echo "Lo siento, no he logrado entenderte";
+  echo Messages::ERR_UNKNOWN_ANSWER;
  }
 
 } else {

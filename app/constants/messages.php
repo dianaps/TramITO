@@ -15,7 +15,7 @@ class Messages
  const ERR_EMAIL_REQUIRED                 = "El correo es requerido";
  const ERR_INCORRECT_USERNAME_OR_PASSWORD = "El usuario o la contraseña son incorrectos";
  const ERR_INCORRECT_FILE_EXTENSION       = "Solo se admiten archivos JPG, JPEG y PNG";
- const ERR_                               = "";
+ const ERR_UNKNOWN_ANSWER                 = "Lo siento, no he logrado entenderte";
 
  // SUCCESS
  const SCS_CREATION_ACCOUNT = "Cuenta creada exitosamente";
