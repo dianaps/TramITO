@@ -1,5 +1,7 @@
 <?php
 
+include 'app/constants/messages.php';
+
 # check if username, password, name submitted
 if (isset($_POST['username']) &&
  isset($_POST['password']) &&
@@ -21,14 +23,14 @@ if (isset($_POST['username']) &&
  #simple form Validation
  if (empty($name)) {
   # error message
-  $em = "El nombre es requerido";
+  $em = Messages::ERR_NAME_REQUIRED;
 
   # redirect to 'signup.php' and passing error message
   header("Location: ../../signup.php?error=$em");
   exit;
  } else if (empty($username)) {
   # error message
-  $em = "El nombre de usuario es requerido";
+  $em = Messages::ERR_USERNAME_REQUIRED;
 
   /*
   redirect to 'signup.php' and
@@ -38,13 +40,13 @@ if (isset($_POST['username']) &&
   exit;
 
  } else if (empty($email)) {
-  $em = "El correo es requerido";
+  $em = Messages::ERR_EMAIL_REQUIRED;
   header("Location: ../../signup.php?error=$em&$data");
   exit;
 
  } else if (empty($password)) {
   # error message
-  $em = "La contraseña es requerida";
+  $em = Messages::ERR_PASSWORD_REQUIRED;
 
   /*
   redirect to 'signup.php' and
@@ -107,7 +109,7 @@ if (isset($_POST['username']) &&
       # move uploaded image to ./upload folder
       move_uploaded_file($tmp_name, $img_upload_path);
      } else {
-      $em = "Solo se admiten archivos JPG, JPEG y PNG";
+      $em = Messages::ERR_INCORRECT_FILE_EXTENSION;
       header("Location: ../../signup.php?error=$em&$data");
       exit;
      }
@@ -137,7 +139,7 @@ if (isset($_POST['username']) &&
    }
 
    # success message
-   $sm = "Cuenta creada exitosamente";
+   $sm =
 
    # redirect to 'index.php' and passing success message
    header("Location: ../../index.php?success=$sm");
