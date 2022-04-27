@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include 'app/constants/messages.php';
+
 # check if username & password  submitted
 if (isset($_POST['username']) &&
  isset($_POST['password'])) {
@@ -15,13 +17,13 @@ if (isset($_POST['username']) &&
  #simple form Validation
  if (empty($username)) {
   # error message
-  $em = "Usuario es requerido";
+  $em = Messages::ERR_USERNAME_REQUIRED;
 
   # redirect to 'index.php' and passing error message
   header("Location: ../../index.php?error=$em");
  } else if (empty($password)) {
   # error message
-  $em = "Contraseña es requerida";
+  $em = Messages::ERR_PASSWORD_REQUIRED;
 
   # redirect to 'index.php' and passing error message
   header("Location: ../../index.php?error=$em");
@@ -57,21 +59,21 @@ if (isset($_POST['username']) &&
 
     } else {
      # error message
-     $em = "El usuario o contraseña son incorrectos";
+     $em = Messages::ERR_INCORRECT_USERNAME_OR_PASSWORD;
 
      # redirect to 'index.php' and passing error message
      header("Location: ../../index.php?error=$em");
     }
    } else {
     # error message
-    $em = "El usuario o contraseña son incorrectos";
+    $em = Messages::ERR_INCORRECT_USERNAME_OR_PASSWORD;
 
     # redirect to 'index.php' and passing error message
     header("Location: ../../index.php?error=$em");
    }
   } else {
    # error message
-   $em = "El usuario o contraseña son incorrectos";
+   $em = Messages::ERR_INCORRECT_USERNAME_OR_PASSWORD;
 
    # redirect to 'index.php' and passing error message
    header("Location: ../../index.php?error=$em");
