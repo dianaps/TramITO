@@ -50,8 +50,6 @@ if (isset($_SESSION['username'])) {
     				 text-center">
 		   <i class="fa fa-user-times d-block fs-big"></i>
          <?php echo sprintf(Messages::ERR_USER_NOT_FOUND, htmlspecialchars($_POST['key'])); ?>
-         <!-- El usuario "<?=htmlspecialchars($_POST['key'])?>"
-           no se encuentra. -->
 		</div>
     <?php }
  }
