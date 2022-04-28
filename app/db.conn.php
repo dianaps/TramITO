@@ -5,11 +5,12 @@ $sName = "localhost";
 # user name
 $uName = "root";
 # password
-$pass = "";
-// $pass = "ErSg2710";
+// $pass = "";
+$pass = "ErSg2710";
 
 # database name
-$db_name = "tramitov1.2";
+$db_name = "tramito";
+// $db_name = "tramitov1.2";
 
 #creating database connection
 try {
