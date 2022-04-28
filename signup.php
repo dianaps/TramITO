@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TramITO - Sign Up</title>
+	<title>TramITO - Registrarse</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	<link rel="stylesheet"
 	      href="css/style.css">
@@ -32,7 +32,7 @@ if (!isset($_SESSION['username'])) {
 	 		     class="w-25">
 	 		<h3 class="display-4 fs-1
 	 		           text-center">
-	 			       Sign Up</h3>
+	 			       Registrarse</h3>
 	 		</div>
 
 	 		<?php if (isset($_GET['error'])) {?>
@@ -45,6 +45,12 @@ if (!isset($_SESSION['username'])) {
   $name = $_GET['name'];
  } else {
   $name = '';
+ }
+
+ if (isset($_GET['last_name'])) {
+  $last_name = $_GET['last_name'];
+ } else {
+  $last_name = '';
  }
 
  if (isset($_GET['username'])) {
@@ -63,7 +69,7 @@ if (!isset($_SESSION['username'])) {
 
 	 	  <div class="mb-3">
 		    <label class="form-label">
-		           Name</label>
+		           Nombre(s)</label>
 		    <input type="text"
 		           name="name"
 		           value="<?=$name?>"
@@ -72,16 +78,26 @@ if (!isset($_SESSION['username'])) {
 
 		  <div class="mb-3">
 		    <label class="form-label">
-		           User name</label>
+		           Apellidos</label>
 		    <input type="text"
-		           class="form-control"
-		           value="<?=$username?>"
-		           name="username">
+		           name="last_name"
+		           value="<?=$last_name?>"
+		           class="form-control">
 		  </div>
 
 		  <div class="mb-3">
 		    <label class="form-label">
-		           Email</label>
+		           Nombre de usuario (número de control)</label>
+		    <input type="number"
+		           class="form-control"
+		           value="<?=$username?>"
+		           name="username"
+				   pattern="[0-9]{8}">
+		  </div>
+
+		  <div class="mb-3">
+		    <label class="form-label">
+		           Correo electrónico</label>
 		    <input type="email"
 		           class="form-control"
 		           value="<?=$email?>"
@@ -91,7 +107,7 @@ if (!isset($_SESSION['username'])) {
 
 		  <div class="mb-3">
 		    <label class="form-label">
-		           Password</label>
+		           Contraseña</label>
 		    <input type="password"
 		           class="form-control"
 		           name="password">
@@ -99,7 +115,7 @@ if (!isset($_SESSION['username'])) {
 
 		  <div class="mb-3">
 		    <label class="form-label">
-		           Profile Picture</label>
+		           Foto de perfil</label>
 		    <input type="file"
 		           class="form-control"
 		           name="pp">
@@ -107,8 +123,8 @@ if (!isset($_SESSION['username'])) {
 
 		  <button type="submit"
 		          class="btn btn-primary">
-		          Sign Up</button>
-		  <a href="index.php">Login</a>
+		          Registrarse</button>
+		  <a href="index.php">Iniciar sesión</a>
 		</form>
 	 </div>
 </body>
