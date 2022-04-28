@@ -59,12 +59,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_seen` datetime NOT NULL DEFAULT current_timestamp(),
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla tramito.users: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla tramito.users: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`user_id`, `name`, `username`, `password`, `p_p`, `last_seen`, `email`) VALUES
-	(14, 'Elian Salmerón', '18011316', '$2y$10$uEYSv3QFV9wTAEVtp7rAb.2QpzXCds9dr5k034aACGGZPRJTLrINu', 'user-default.png', '2022-04-18 20:33:23', 'eliansalmeron@gmail.com');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Volcando estructura para tabla tramito.xoochbot
