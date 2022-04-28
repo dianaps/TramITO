@@ -22,9 +22,9 @@ h1, h2, h3, h4, h5, h6{
 	position: absolute;
 	margin: 0;
 	top: 0;
-	background: linear-gradient(to bottom right,
+	/* background: linear-gradient(to bottom right,
 		#052d2a, #000000);
-	background-image: url("../img/image-login.jpg");
+	background-image: url("../img/image-login.jpg"); */
 	filter: blur(1.5px);
 	-webkit-filter: blur(1.5px);
 	background-repeat: no-repeat;
