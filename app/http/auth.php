@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'app/constants/messages.php';
+include '../constants/messages.php';
 
 # check if username & password  submitted
 if (isset($_POST['username']) &&
