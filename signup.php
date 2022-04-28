@@ -86,14 +86,17 @@ if (!isset($_SESSION['username'])) {
 		  </div>
 
 		  <div class="mb-3">
+
+		  <!-- FALTA VALIDAR QUE SOLO SE PUEDAN INGRESAR 8 DÍGITOS -->
 		    <label class="form-label">
 		           Nombre de usuario (número de control)</label>
-		    <input type="number"
+		    <input type="text"
 		           class="form-control"
 		           value="<?=$username?>"
 		           name="username"
-				   pattern="[0-9]{8}">
+				   pattern="[0-9]{8}" title="El número de control contiene 8 dígitos">
 		  </div>
+		  <!--  -->
 
 		  <div class="mb-3">
 		    <label class="form-label">
