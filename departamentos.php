@@ -3,13 +3,9 @@ session_start();
 if (isset($_SESSION['username'])) {
  # database connection file
  include 'app/db.conn.php';
-
- include 'app/helpers/user.php';
- include 'app/helpers/chat.php';
- include 'app/helpers/opened.php';
-
- include 'app/helpers/timeAgo.php';
-
+ include 'app/helpers/departments.php';
+# Getting Departments Data
+ $departments = getDepartments($conn);
  ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -41,8 +37,11 @@ if (isset($_SESSION['username'])) {
 		<div class="container">
 			<div class="row m-auto p-0">
 				<div class="row justify-content-center">
-					<!-- card 1 -->
-					<div
+
+<?php
+if (!empty($departments)) {
+  foreach ($departments as $department) {?>
+  					<div
 						class="card card-custom bg-white border-white border-0 col-xl-3 col-lg-4 col-md-6 col-xs-12 mx-3 mb-4 p-0"
 						style="height: 450px"
 					>
@@ -60,189 +59,29 @@ if (isset($_SESSION['username'])) {
 							/>
 						</div>
 						<div class="card-body" style="overflow-y: auto">
-							<h4 class="card-title">Lenguas extranjeras</h4>
+							<h4 class="card-title"><?=$department['department_name']?></h4>
 							<p class="card-text">
-								**Con php se traerá de la base de datos la descripción del
-								depto**.
+								<?=$department['info']?>
 							</p>
 						</div>
 						<div
 							class="card-footer"
 							style="background: inherit; border-color: inherit"
 						>
-							<a href="chat.php?user=lenguasextranjeras" class="btn btn-primary">Chat</a>
+							<a href="chat.php?user=<?=$department['username']?>" class="btn btn-primary">Chat</a>
 						</div>
 					</div>
-					<div
-						class="card card-custom bg-white border-white border-0 col-xl-3 col-lg-4 col-md-6 col-xs-12 mx-3 mb-4 p-0"
-						style="height: 450px"
-					>
-						<div
-							class="card-custom-img"
-							style="
-								background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);
-							"
-						></div>
-						<div class="card-custom-avatar">
-							<img
-								class="img-fluid"
-								src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg"
-								alt="Avatar"
-							/>
+<?php
+}
+ } else {?>
+						<div class="alert alert-info
+									text-center">
+							<i class="fa fa-comments d-block fs-big"></i>
+							<?php echo Messages::EMPTY_DEPARTMENTS; ?>
 						</div>
-						<div class="card-body" style="overflow-y: auto">
-							<h4 class="card-title">Lenguas extranjeras</h4>
-							<p class="card-text">
-								**Con php se traerá de la base de datos la descripción del
-								depto**.
-							</p>
-						</div>
-						<div
-							class="card-footer"
-							style="background: inherit; border-color: inherit"
-						>
-							<a href="#" class="btn btn-primary">Chat</a>
-						</div>
-					</div>
-					<div
-						class="card card-custom bg-white border-white border-0 col-xl-3 col-lg-4 col-md-6 col-xs-12 mx-3 mb-4 p-0"
-						style="height: 450px"
-					>
-						<div
-							class="card-custom-img"
-							style="
-								background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);
-							"
-						></div>
-						<div class="card-custom-avatar">
-							<img
-								class="img-fluid"
-								src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg"
-								alt="Avatar"
-							/>
-						</div>
-						<div class="card-body" style="overflow-y: auto">
-							<h4 class="card-title">Lenguas extranjeras</h4>
-							<p class="card-text">
-								**Con php se traerá de la base de datos la descripción del
-								depto**.
-							</p>
-						</div>
-						<div
-							class="card-footer"
-							style="background: inherit; border-color: inherit"
-						>
-							<a href="#" class="btn btn-primary">Chat</a>
-						</div>
-					</div>
-					<div
-						class="card card-custom bg-white border-white border-0 col-xl-3 col-lg-4 col-md-6 col-xs-12 mx-3 mb-4 p-0"
-						style="height: 450px"
-					>
-						<div
-							class="card-custom-img"
-							style="
-								background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);
-							"
-						></div>
-						<div class="card-custom-avatar">
-							<img
-								class="img-fluid"
-								src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg"
-								alt="Avatar"
-							/>
-						</div>
-						<div class="card-body" style="overflow-y: auto">
-							<h4 class="card-title">Lenguas extranjeras</h4>
-							<p class="card-text">
-								**Con php se traerá de la base de datos la descripción del
-								depto.**
-							</p>
-							<br>
-							<p class="card-text">
-								**Con php se traerá de la base de datos la descripción del
-								depto.**
-							</p>
-							<br>
-							<p class="card-text">
-								**Con php se traerá de la base de datos la descripción del
-								depto.**
-							</p>
-							<br>
-							<p class="card-text">
-								**Con php se traerá de la base de datos la descripción del
-								depto.**
-							</p>
-						</div>
-						<div
-							class="card-footer"
-							style="background: inherit; border-color: inherit"
-						>
-							<a href="#" class="btn btn-primary">Chat</a>
-						</div>
-					</div>
-					<div
-						class="card card-custom bg-white border-white border-0 col-xl-3 col-lg-4 col-md-6 col-xs-12 mx-3 mb-4 p-0"
-						style="height: 450px"
-					>
-						<div
-							class="card-custom-img"
-							style="
-								background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);
-							"
-						></div>
-						<div class="card-custom-avatar">
-							<img
-								class="img-fluid"
-								src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg"
-								alt="Avatar"
-							/>
-						</div>
-						<div class="card-body" style="overflow-y: auto">
-							<h4 class="card-title">Lenguas extranjeras</h4>
-							<p class="card-text">
-								**Con php se traerá de la base de datos la descripción del
-								depto**.
-							</p>
-						</div>
-						<div
-							class="card-footer"
-							style="background: inherit; border-color: inherit"
-						>
-							<a href="#" class="btn btn-primary">Chat</a>
-						</div>
-					</div>
-					<div
-						class="card card-custom bg-white border-white border-0 col-xl-3 col-lg-4 col-md-6 col-xs-12 mx-3 mb-4 p-0"
-						style="height: 450px"
-					>
-						<div
-							class="card-custom-img"
-							style="
-								background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);
-							"
-						></div>
-						<div class="card-custom-avatar">
-							<img
-								class="img-fluid"
-								src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg"
-								alt="Avatar"
-							/>
-						</div>
-						<div class="card-body" style="overflow-y: auto">
-							<h4 class="card-title">Lenguas extranjeras</h4>
-							<p class="card-text">
-								**Con php se traerá de la base de datos la descripción del
-								depto**.
-							</p>
-						</div>
-						<div
-							class="card-footer"
-							style="background: inherit; border-color: inherit"
-						>
-							<a href="#" class="btn btn-primary">Chat</a>
-						</div>
-					</div>
+<?php
+}
+ ?>
 
 				</div>
 
