@@ -13,10 +13,10 @@ if (isset($_SESSION['username'])) {
  include 'app/constants/messages.php';
 
  # Getting User data data
- $user = getUser($_SESSION['username'], $conn);
+ $user = getUser($_SESSION['user_id'], $_SESSION['role'], $conn);
 
  # Getting User conversations
- $conversations = getConversation($user['user_id'], $conn);
+ $conversations = getConversation($_SESSION['user_id'], $conn);
 
  if (!empty($chatWith)) {
   $chats = getChats($_SESSION['user_id'], $chatWith['user_id'], $conn);
@@ -58,7 +58,17 @@ if (isset($_SESSION['username'])) {
 								align-items-center">
 						<img src="uploads/<?=$user['p_p']?>"
 							class="w-25 rounded-circle">
-						<h3 class="fs-xs m-2"><?=$user['name']?></h3>
+						<?php
+if ($_SESSION['role'] == 'student') {
+  ?>
+						<h3 class="fs-xs m-2"><?=$user['name']?> <?=$user['last_name']?></h3>
+						<?php
+} else {
+  ?>
+						<h3 class="fs-xs m-2"><?=$user['department_name']?></h3>
+						<?php
+}
+ ?>
 					</div>
 				</div>
 
