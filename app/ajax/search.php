@@ -13,11 +13,22 @@ if (isset($_SESSION['username'])) {
   # creating simple search algorithm :)
   $key = "%{$_POST['key']}%";
 
-  $sql = "SELECT * FROM users
-	           WHERE username
-	           LIKE ? OR name LIKE ?";
-  $stmt = $conn->prepare($sql);
-  $stmt->execute([$key, $key]);
+//  Si es estudiante sólo podrá hablar con departamentos
+  if (strcmp($_SESSION['role'], 'student') === 0) {
+   $sql = "SELECT * FROM users
+              INNER JOIN departments ON users.user_id=departments.user_id
+	           WHERE departments.department_name LIKE ?";
+   $stmt = $conn->prepare($sql);
+   $stmt->execute([$key]);
+  } else {
+   $sql = "SELECT * FROM users
+              INNER JOIN students ON users.user_id=students.user_id
+	           WHERE users.username
+	           LIKE ? OR students.name LIKE ? OR students.last_name LIKE ?";
+   $stmt = $conn->prepare($sql);
+   $stmt->execute([$key, $key, $key]);
+
+  }
 
   if ($stmt->rowCount() > 0) {
    $users = $stmt->fetchAll();
