@@ -51,7 +51,15 @@ if (isset($_SESSION['username'])) {
 			         class="w-10 rounded-circle">
 
 			    <h3 class="fs-xs m-2">
-			    	<?=$user['name']?>
+			    	<?php
+//  Si el usuario es estudiante solo podra comunicarse con departamentos
+    if ($_SESSION['role'] == 'student') {
+     echo $user['department_name'];
+    } else {
+     echo $user['name'] . $user['last_name'];
+    }
+
+    ?>
 			    </h3>
 			</div>
 		 </a>
