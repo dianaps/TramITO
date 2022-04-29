@@ -52,20 +52,6 @@
 
 				<!-- Mensaje de éxito -->
                 <div id="success" class="alert alert-success" role="alert"></div>
-                
-                <?php
-                    if (isset($_GET['name'])) {
-                        $name = $_GET['name'];
-                    }else $name = '';
-    
-                    if (isset($_GET['username'])) {
-                        $username = $_GET['username'];
-                    }else $username = '';
-
-                    if (isset($_GET['email'])) {
-                        $email = $_GET['email'];
-                    }else $email = '';
-                ?>
 
                 <!-- Esto se oculta para mostrar obtener id -->
 				<div id="div-id" class="mb-3">

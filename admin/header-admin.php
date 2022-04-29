@@ -30,6 +30,12 @@
             <a class="nav-link" href="search-admin.php">Buscar Admin</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="add-dep.php">Agregar Dep</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="search-dep.php">Buscar Dep</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#">Mi perfil</a>
           </li>
           <li class="nav-item">

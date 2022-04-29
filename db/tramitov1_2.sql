@@ -135,9 +135,9 @@ CREATE TABLE `users` (
   `username` varchar(60) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `p_p` varchar(255) NOT NULL,
-  `last_seen` date NOT NULL,
-  `role` varchar(10) NOT NULL DEFAULT 'student'
+  `p_p` varchar(255) NOT NULL 'user-default.png',
+  `last_seen` date NOT NULL DEFAULT current_timestamp(),
+  `role` varchar(10) NOT NULL DEFAULT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
