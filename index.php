@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
- ?>
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +49,7 @@ if (!isset($_SESSION['username'])) {
 			<?php }?>
 		  <div class="mb-3">
 		    <label class="form-label">
-		           Username</label>
+		           Nombre de usuario</label>
 		    <input type="text"
 		           class="form-control"
 		           name="username">
@@ -57,7 +57,7 @@ if (!isset($_SESSION['username'])) {
 
 		  <div class="mb-3">
 		    <label class="form-label">
-		           Password</label>
+		           Contraseña</label>
 		    <input type="password"
 		           class="form-control"
 		           name="password">
@@ -65,7 +65,7 @@ if (!isset($_SESSION['username'])) {
 
 		  <button type="submit"
 		          class="btn btn-primary">
-		          Login</button>
+		          Iniciar sesión</button>
 		  <a href="signup.php">Sign Up</a>
 		</form>
 		<br>
@@ -75,7 +75,7 @@ if (!isset($_SESSION['username'])) {
 </html>
 <?php
 } else {
- header("Location: home.php");
- exit;
+    header("Location: home.php");
+    exit;
 }
 ?>
