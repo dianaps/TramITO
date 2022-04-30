@@ -6,22 +6,15 @@ if (isset($_SESSION['username'])) {
  include 'app/db.conn.php';
  include 'app/helpers/user.php';
  include 'app/helpers/conversations.php';
- include 'app/helpers/chat.php';
- include 'app/helpers/opened.php';
  include 'app/helpers/timeAgo.php';
  include 'app/helpers/last_chat.php';
  include 'app/constants/messages.php';
 
- # Getting User data data
+ # Getting User data
  $user = getUser($_SESSION['user_id'], $_SESSION['role'], $conn);
 
  # Getting User conversations
- $conversations = getConversation($_SESSION['user_id'], $conn);
-
- if (!empty($chatWith)) {
-  $chats = getChats($_SESSION['user_id'], $chatWith['user_id'], $conn);
-  opened($chatWith['user_id'], $conn, $chats);
- }
+ $conversations = getConversation($user['user_id'], $conn);
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +81,7 @@ if ($_SESSION['role'] == 'student') {
 					<?php if (!empty($conversations)) {?>
 						<?php foreach ($conversations as $conversation) {?>
 						<li class="list-group-item">
-							<a href="chat.php?user=<?=$conversation['username']?>"
+							<a href="chat.php?user=<?=$conversation['user_id']?>&role=<?=$conversation['role']?>"
 							class="d-flex
 							justify-content-between
 							align-items-center p-2">

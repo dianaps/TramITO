@@ -1,12 +1,12 @@
 <?php
 session_start();
 if (isset($_SESSION['username'])) {
-    # database connection file
-    include 'app/db.conn.php';
-    include 'app/helpers/departments.php';
+ # database connection file
+ include 'app/db.conn.php';
+ include 'app/helpers/departments.php';
 # Getting Departments Data
-    $departments = getDepartments($conn);
-    ?>
+ $departments = getDepartments($conn);
+ ?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -40,7 +40,7 @@ if (isset($_SESSION['username'])) {
 
 <?php
 if (!empty($departments)) {
-        foreach ($departments as $department) {?>
+  foreach ($departments as $department) {?>
   					<div
 						class="card card-custom bg-white border-white border-0 col-xl-3 col-lg-4 col-md-6 col-xs-12 mx-3 mb-4 p-0"
 						style="height: 450px"
@@ -68,12 +68,12 @@ if (!empty($departments)) {
 							class="card-footer"
 							style="background: inherit; border-color: inherit"
 						>
-							<a href="chat.php?user=<?=$department['username']?>" class="btn btn-primary">Chat</a>
+							<a href="chat.php?user=<?=$department['user_id']?>&role=department" class="btn btn-primary">Chat</a>
 						</div>
 					</div>
 <?php
 }
-    } else {?>
+ } else {?>
 						<div class="alert alert-info
 									text-center">
 							<i class="fa fa-comments d-block fs-big"></i>
@@ -81,7 +81,7 @@ if (!empty($departments)) {
 						</div>
 <?php
 }
-    ?>
+ ?>
 
 				</div>
 
@@ -95,7 +95,7 @@ if (!empty($departments)) {
 </html>
 <?php
 } else {
-    header("Location: index.php");
-    exit;
+ header("Location: index.php");
+ exit;
 }
 ?>

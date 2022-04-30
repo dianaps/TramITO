@@ -40,7 +40,7 @@ if (isset($_SESSION['username'])) {
 
     ?>
        <li class="list-group-item">
-		<a href="chat.php?user=<?=$user['username']?>"
+		<a href="chat.php?user=<?=$user['user_id']?>&role=<?=$user['role']?>"
 		   class="d-flex
 		          justify-content-between
 		          align-items-center p-2">

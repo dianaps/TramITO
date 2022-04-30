@@ -9,8 +9,8 @@ $uName = "root";
 $pass = "";
 
 # database name
+// $db_name = "tramito";
 $db_name = "tramito";
-// $db_name = "tramitov1.2";
 
 #creating database connection
 try {

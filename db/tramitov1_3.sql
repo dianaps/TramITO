@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2022 at 09:51 PM
+-- Generation Time: Apr 30, 2022 at 06:17 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -50,8 +50,8 @@ INSERT INTO `admins` (`admin_id`, `name`, `username`, `password`, `email`) VALUE
 
 CREATE TABLE `chats` (
   `chat_id` int(11) NOT NULL,
-  `from_id integer` int(11) NOT NULL,
-  `to_id integer` int(11) NOT NULL,
+  `from_id` int(11) NOT NULL,
+  `to_id` int(11) NOT NULL,
   `message` varchar(150) NOT NULL,
   `opened` tinyint(1) NOT NULL,
   `created_at` date NOT NULL
@@ -124,6 +124,14 @@ CREATE TABLE `students` (
   `career` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`user_id`, `name`, `last_name`, `semester`, `career`) VALUES
+(14, 'Elián', 'Salmerón', 8, 'Ingeniería en Sistemas Computacionales'),
+(138, 'Diana Alejandra', 'Pérez Sánchez', 8, 'Ingeniería en Sistemas Computacionales');
+
 -- --------------------------------------------------------
 
 --
@@ -135,7 +143,7 @@ CREATE TABLE `users` (
   `username` varchar(60) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `p_p` varchar(255) NOT NULL,
+  `p_p` varchar(255) NOT NULL DEFAULT 'user-default.png',
   `last_seen` date NOT NULL,
   `role` varchar(10) NOT NULL DEFAULT 'student'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -146,28 +154,28 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `p_p`, `last_seen`, `role`) VALUES
 (14, '18011316', '$2y$10$uEYSv3QFV9wTAEVtp7rAb.2QpzXCds9dr5k034aACGGZPRJTLrINu', 'eliansalmeron@gmail.com', 'user-default.png', '2022-04-18', 'student'),
-(111, 'GenaroElías', 'Genaro23320', 'genaro.mu@orizaba.tecnm.mx', '', '0000-00-00', 'department'),
-(112, 'IgnacioLopez', 'IGlo998', 'dsistemasc@orizaba.tecnm.mx', '', '0000-00-00', 'department'),
-(113, 'EldaRZ', 'EldaRu0109', 'dda_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(114, 'MarioLeoncio', 'mmario3328', 'depi_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(115, 'DelmaVargas', 'VargasD093', 'dep_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(116, 'DavidBertani', 'Bertani937697773', 'jefatura.elect@orizaba.tecnm.mx', '', '0000-00-00', 'department'),
-(117, 'JorgeGalán', 'JG82BN98', 'jorge.gm@orizaba.tecnm.mx', '', '0000-00-00', 'department'),
-(118, 'MaríadeLourdesAbdala', 'IKDH9977V', 'cbas_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(119, 'LauraRodríguez', 'BRL9748NHD0', 'departamento_quimica@orizaba.tecnm.mx', '', '0000-00-00', 'department'),
-(120, 'RobertoRosales', 'RobertoR98Y473', 'cead_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(121, 'AlmaIvonneSánchez', 'Almita88773YG', 'se_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(122, 'AuroraFuentes', 'Fuentes76469', 'vin_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(123, 'PaulinadelCarmenDelgado', 'PauCD08872', 'cyd_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(124, 'VíctorContreras', 'VC8887666000', 'ext_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(125, 'MarcoAlamillo', 'M87A09A71', 'pl_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(126, 'ChristianLaureano', 'Laureano94441', 'ci_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(127, 'RaúlTorresR', 'TorRes0101095', 'cc_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(128, 'JuanCarlosWelsh', 'Welsh421230JC', 'mantenimiento@orizaba.tecnm.mx', '', '0000-00-00', 'department'),
-(129, 'AliciaTiradoGálvez', 'AM9832TG', 'rf_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(130, 'VerónicaRuizFelipe', 'Ruiz9032222Fe', 'rh_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(131, 'OscarEliozaR', 'EL2929011', 'rm_orizaba@tecnm.mx', '', '0000-00-00', 'department'),
-(138, '18011275', '$2y$10$jJlIeMtgYbPmBm.m1imcPO/CSZrhDhYy2XcwOkyjV8L3lMzif9Uwu', 'diannalejandra.ps@gmail.com', '', '2022-04-28', 'student');
+(111, 'GenaroElías', 'Genaro23320', 'genaro.mu@orizaba.tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(112, 'IgnacioLopez', 'IGlo998', 'dsistemasc@orizaba.tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(113, 'EldaRZ', 'EldaRu0109', 'dda_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(114, 'MarioLeoncio', 'mmario3328', 'depi_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(115, 'DelmaVargas', 'VargasD093', 'dep_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(116, 'DavidBertani', 'Bertani937697773', 'jefatura.elect@orizaba.tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(117, 'JorgeGalán', 'JG82BN98', 'jorge.gm@orizaba.tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(118, 'MaríadeLourdesAbdala', 'IKDH9977V', 'cbas_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(119, 'LauraRodríguez', 'BRL9748NHD0', 'departamento_quimica@orizaba.tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(120, 'RobertoRosales', 'RobertoR98Y473', 'cead_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(121, 'AlmaIvonneSánchez', 'Almita88773YG', 'se_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(122, 'AuroraFuentes', 'Fuentes76469', 'vin_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(123, 'PaulinadelCarmenDelgado', 'PauCD08872', 'cyd_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(124, 'VíctorContreras', 'VC8887666000', 'ext_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(125, 'MarcoAlamillo', 'M87A09A71', 'pl_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(126, 'ChristianLaureano', 'Laureano94441', 'ci_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(127, 'RaúlTorresR', 'TorRes0101095', 'cc_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(128, 'JuanCarlosWelsh', 'Welsh421230JC', 'mantenimiento@orizaba.tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(129, 'AliciaTiradoGálvez', 'AM9832TG', 'rf_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(130, 'VerónicaRuizFelipe', 'Ruiz9032222Fe', 'rh_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(131, 'OscarEliozaR', 'EL2929011', 'rm_orizaba@tecnm.mx', 'user-default.png', '0000-00-00', 'department'),
+(138, '18011275', '$2y$10$jJlIeMtgYbPmBm.m1imcPO/CSZrhDhYy2XcwOkyjV8L3lMzif9Uwu', 'diannalejandra.ps@gmail.com', 'user-default.png', '2022-04-29', 'student');
 
 -- --------------------------------------------------------
 
@@ -216,8 +224,8 @@ ALTER TABLE `admins`
 --
 ALTER TABLE `chats`
   ADD PRIMARY KEY (`chat_id`),
-  ADD KEY `FKchats606360` (`from_id integer`),
-  ADD KEY `FKchats192021` (`to_id integer`);
+  ADD KEY `FKchats606360` (`from_id`),
+  ADD KEY `FKchats192021` (`to_id`);
 
 --
 -- Indexes for table `conversations`
@@ -292,8 +300,8 @@ ALTER TABLE `xoochbot`
 -- Constraints for table `chats`
 --
 ALTER TABLE `chats`
-  ADD CONSTRAINT `FKchats192021` FOREIGN KEY (`to_id integer`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `FKchats606360` FOREIGN KEY (`from_id integer`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `FKchats192021` FOREIGN KEY (`to_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `FKchats606360` FOREIGN KEY (`from_id`) REFERENCES `users` (`user_id`);
 
 --
 -- Constraints for table `conversations`

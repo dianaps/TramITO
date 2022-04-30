@@ -14,9 +14,12 @@ function getUser($user_id, $role, $conn)
  $stmt = $conn->prepare($sql);
  $stmt->execute([$user_id]);
  if ($stmt->rowCount() === 1) {
+  echo 'yes';
   $user = $stmt->fetch();
   return $user;
  } else {
+  echo 'no';
+
   $user = [];
   return $user;
  }

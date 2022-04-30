@@ -3,29 +3,29 @@ session_start();
 if (isset($_SESSION['username'])) {
  # database connection file
  include 'app/db.conn.php';
-
  include 'app/helpers/user.php';
  include 'app/helpers/chat.php';
  include 'app/helpers/opened.php';
  include 'app/helpers/timeAgo.php';
- include 'app/constants/messages.php';
 
- if (!isset($_GET['user'])) {
+ if (!isset($_GET['user']) || !isset($_GET['role'])) {
   header("Location: home.php");
   exit;
  }
 
  # Getting User data data
- $chatWith = getUser($_GET['user'], $conn);
-
+ $chatWith = getUser($_GET['user'], $_GET['role'], $conn);
  if (empty($chatWith)) {
   header("Location: home.php");
   exit;
  }
 
  $chats = getChats($_SESSION['user_id'], $chatWith['user_id'], $conn);
-
  opened($chatWith['user_id'], $conn, $chats);
+
+//   header("Location: home.php");
+ //   exit;
+
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +55,14 @@ if (isset($_SESSION['username'])) {
     	   	       class="w-15 rounded-circle">
 
                <h3 class="display-4 fs-sm m-2">
-               	  <?=$chatWith['name']?> <br>
+<?php if ($_SESSION['role'] == 'student') {
+  echo $chatWith['department_name'];
+ } else {
+  echo $chatWith['name'] . $chatWith['last_name'];
+
+ }
+ ?>
+					 <br>
                	  <div class="d-flex
                	              align-items-center"
                	        title="online">
