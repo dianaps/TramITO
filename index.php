@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    ?>
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +75,7 @@ if (!isset($_SESSION['username'])) {
 </html>
 <?php
 } else {
-    header("Location: home.php");
-    exit;
+ header("Location: home.php");
+ exit;
 }
 ?>

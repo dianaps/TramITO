@@ -50,12 +50,13 @@ if (isset($_POST['username']) &&
      $_SESSION['user_id']  = $user['user_id'];
      $_SESSION['role']     = $user['role'];
 
+     header("Location: ../../home.php");
      # redirect to 'home.php' or 'home-admin'                           //////////////////////////////////////////////////////Quitar?? Misma interfaz departamento/alumno
-     if (strcmp($_SESSION['role'], 'student') === 0 && is_numeric($_SESSION['username'])) {
-      header("Location: ../../home.php");
-     } else {
-      header("Location: ../../home-admin.php");
-     }
+     //  if (strcmp($_SESSION['role'], 'student') === 0 && is_numeric($_SESSION['username'])) {
+     //   header("Location: ../../home.php");
+     //  } else {
+     //   header("Location: ../../home-admin.php");
+     //  }
 
     } else {
      # error message

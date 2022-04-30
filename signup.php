@@ -59,6 +59,18 @@ if (!isset($_SESSION['username'])) {
   $username = '';
  }
 
+ if (isset($_GET['career'])) {
+  $career = $_GET['career'];
+ } else {
+  $career = '';
+ }
+
+ if (isset($_GET['semester'])) {
+  $semester = $_GET['semester'];
+ } else {
+  $semester = '';
+ }
+
  if (isset($_GET['email'])) {
   $email = $_GET['email'];
  } else {
@@ -97,6 +109,26 @@ if (!isset($_SESSION['username'])) {
 				   pattern="[0-9]{8}" title="El número de control contiene 8 dígitos">
 		  </div>
 		  <!--  -->
+
+		  <div class="mb-3">
+		    <label class="form-label">
+		           Carrera</label>
+		    <input type="text"
+		           name="career"
+		           value="<?=$career?>"
+		           class="form-control">
+		  </div>
+
+		  <div class="mb-3">
+		    <label class="form-label">
+		           Semestre</label>
+		    <input type="numeric"
+			min='0'
+			max='13'
+		           name="semester"
+		           value="<?=$semester?>"
+		           class="form-control">
+		  </div>
 
 		  <div class="mb-3">
 		    <label class="form-label">
