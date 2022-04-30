@@ -7,6 +7,7 @@ if (isset($_SESSION['username'])) {
  include 'app/helpers/chat.php';
  include 'app/helpers/opened.php';
  include 'app/helpers/timeAgo.php';
+ include 'app/constants/messages.php';
 
  if (!isset($_GET['user']) || !isset($_GET['role'])) {
   header("Location: home.php");

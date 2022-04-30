@@ -7,7 +7,6 @@ date_default_timezone_set(TIMEZONE);
 
 function last_seen($date_time)
 {
-
  $timestamp = strtotime($date_time);
 
  $strTime = array("segundos", "minutos", "hora", "día", "mes", "año");
