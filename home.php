@@ -89,7 +89,16 @@ if ($_SESSION['role'] == 'student') {
 									<img src="uploads/<?=$conversation['p_p']?>"
 										class="w-10 rounded-circle">
 									<h3 class="fs-xs m-2">
-										<?=$conversation['name']?><br>
+										<!-- Cambian los campos dependiendo del rol  -->
+										<?php
+$user_extra_data = getUser($conversation['user_id'], $conversation['role'], $conn);
+  if ($_SESSION['role'] == 'student') {
+   echo $user_extra_data['department_name'];
+  } else {
+   echo $user_extra_data['name'] . $user_extra_data['last_name'];
+  }
+  ?>
+										<br>
 										<small>
 											<?php echo lastChat($_SESSION['user_id'], $conversation['user_id'], $conn); ?>
 										</small>
