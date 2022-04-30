@@ -54,7 +54,7 @@ if (isset($_SESSION['username'])) {
 						<?php
 if ($_SESSION['role'] == 'student') {
   ?>
-						<h3 class="fs-xs m-2"><?=$user['name']?> <?=$user['last_name']?></h3>
+						<h3 class="fs-xs m-2"><?php echo $user['name'] . " " . $user['last_name'] ?></h3>
 						<?php
 } else {
   ?>
@@ -95,7 +95,7 @@ $user_extra_data = getUser($conversation['user_id'], $conversation['role'], $con
   if ($_SESSION['role'] == 'student') {
    echo $user_extra_data['department_name'];
   } else {
-   echo $user_extra_data['name'] . $user_extra_data['last_name'];
+   echo $user_extra_data['name'] . " " . $user_extra_data['last_name'];
   }
   ?>
 										<br>

@@ -56,7 +56,7 @@ if (isset($_SESSION['username'])) {
     if ($_SESSION['role'] == 'student') {
      echo $user['department_name'];
     } else {
-     echo $user['name'] . $user['last_name'];
+     echo $user['name'] . " " . $user['last_name'];
     }
 
     ?>
