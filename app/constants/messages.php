@@ -11,9 +11,13 @@ class Messages
  const ERR_USER_NOT_FOUND                 = "El usuario %s no ha sido encontrado";
  const ERR_NAME_REQUIRED                  = "El nombre es requerido";
  const ERR_LAST_NAME_REQUIRED             = "Los apellidos son requeridos";
- const ERR_USERNAME_REQUIRED              = "El nombre de usuario es requerido";
+ const ERR_USERNAME_REQUIRED              = "El número de control es requerido";
+ const ERR_FORMAT_USERNAME                = "El número de control está formado únicamente por 8 dígitos";
  const ERR_PASSWORD_REQUIRED              = "La contraseña es requerida";
+ const ERR_CAREER_REQUIRED                = "La carrera es requerida";
+ const ERR_SEMESTER_REQUIRED              = "El semestre es requerido";
  const ERR_EMAIL_REQUIRED                 = "El correo electrónico es requerido";
+ const ERR_FORMAT_EMAIL                   = "El formato del email no es válido";
  const ERR_INCORRECT_USERNAME_OR_PASSWORD = "El usuario o la contraseña son incorrectos";
  const ERR_INCORRECT_FILE_EXTENSION       = "Solo se admiten archivos JPG, JPEG y PNG";
  const ERR_UNKNOWN_ANSWER                 = "Lo siento, no he logrado entenderte";
