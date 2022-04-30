@@ -2,8 +2,8 @@
 
 body {
 	padding-top: 65px;
-	font-family: 'Source Sans Pro',
-	sans-serif;
+	font-family: 'Roboto', sans-serif;
+	
 	/* background: linear-gradient(
 		to bottom right,
 		#09cec1, #001324
@@ -83,7 +83,6 @@ small {
 .ltext {
 	width: 65%;
 	background: #3289c8;
-	color: #fff;
 }
 /* width */
 *::-webkit-scrollbar {
@@ -121,3 +120,46 @@ textarea {
 	overflow: hidden;
 }
 /*message_status*/
+.middle-container{
+	background-color: #a4ffff;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+	padding-left: 30px;
+	align-items: center;
+  }
+.v{
+	padding-right: 5%;
+	padding-bottom: 20px;
+	padding-left: 5%;
+	align-items: center;
+}
+.abs-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 50vh;
+  }
+.col1{
+	width: 500px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.col2{
+	width: 500px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.col3{
+	width: 500px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.col4{
+	width: 500px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.v1{
+	padding-bottom: 20px;
+}
