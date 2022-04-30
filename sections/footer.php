@@ -28,7 +28,7 @@ body{
       <a class="footer-link" href="http://www.orizaba.tecnm.mx/">ITO</a>
       <a class="footer-link" href="https://www.facebook.com/Tram-ITO-116150757742955">Facebook TramITO</a>
       <a class="footer-link" href="https://www.facebook.com/tecorizaba">Facebook ITO</a>
-      <a class="footer-link" href="https://dianaps.github.io/CV">Correo</a>
+      <a class="footer-link" href="https://www.instagram.com/grupotramito/">Instagram TramITO</a>
 </p>
       <p class="footer-text">© 2022 TramITO</p>
 
