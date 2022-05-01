@@ -88,9 +88,6 @@
           <li class="nav-item">
             <a class="nav-link" href="update-pass-admin.php">Mi perfil</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contacto</a>
-          </li>
           </ul>
           <a href="../logout.php" class="btn btn-light">Cerrar sesión</a>
       </div>

@@ -14,6 +14,20 @@
 	<link rel="icon" href="../img/logo.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<style>
+	#suggestions{
+		box-shadow: 2px 2px 8px 0 rgba(0,0,0,.2);
+    	height: auto;
+	}
+	#suggestions .suggest-element{
+		background-color: white;
+		border-top: 1px solid #d6d4d4;
+		cursor: pointer;
+		padding: 8px;
+		width: 100%;
+		float: left;
+	}
+</style>
 <body class="">
 
 	<?php include "header-admin.php"?>
@@ -45,6 +59,7 @@
                             <i class="fa fa-search"></i>
                         </button>
 					</div>
+                    <div id="suggestions"></div>
 				</div>
 
                 <!-- Mensaje de error -->
@@ -165,6 +180,36 @@
 			}, 2000);
 		}
 
+        /* TEXTO PREDICTIVO */
+        $("#searchText").on('keyup', function () {
+            var key = $(this).val();
+            var dataDepartment = 'department=' + key;
+            
+            if(dataDepartment != 'department='){
+                $.ajax({
+                    type: "POST",
+                    url: "../app/ajax/predictive-dep.php",
+                    data: dataDepartment,
+                    success: function (data) {
+                        // Se muestran todas las sugerencias
+                        $("#suggestions").fadeIn(250).html(data);
+
+                        /* Si se da click en cualquier sugerencia entonces
+						   se acompleta el valor de esta en el cuadro de búsqueda
+						*/
+                        $(".suggest-element").on('click', function () {
+							var id = $(this).attr('id');
+							$("#searchText").val($('#'+id).attr('data'));
+							$("#suggestions").fadeOut(250);
+							return false;
+						});
+                    }
+                });
+            }else
+                $("#suggestions").fadeOut(100);
+        });
+
+        /* BUSQUEDA DEL DEPARTAMENTO */
         $("#btn-search").on('click', function(e){
             /* Se obtiene el nombre del admin a buscar */
             $dep = $.trim($('#searchText').val());

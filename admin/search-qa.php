@@ -18,7 +18,6 @@
 	#suggestions{
 		box-shadow: 2px 2px 8px 0 rgba(0,0,0,.2);
     	height: auto;
-		z-index: 9999;
 	}
 	#suggestions .suggest-element {
 		background-color: white;
@@ -142,23 +141,30 @@
 		/* BÚSQUEDA DE LA QA */
 		$("#searchtext").on('keyup', function () {
 			var key = $(this).val();
-			var dataString = 'key=' + key;
+			var dataQuestion = 'question=' + key;
 
-			$.ajax({
-				type: "POST",
-				url: "../app/ajax/predictive-qa.php",
-				data: dataString,
-				success: function (data) {
-					$("#suggestions").fadeIn(1000).html(data);
+			if(dataQuestion != 'question='){
+				$.ajax({
+					type: "POST",
+					url: "../app/ajax/predictive-qa.php",
+					data: dataQuestion,
+					success: function (data) {
+						// Se muestran todas las sugerencias
+						$("#suggestions").fadeIn(250).html(data);
 
-					$(".suggest-element").on('click', function () {
-						var id = $(this).attr('id');
-						$("#searchtext").val($('#'+id).attr('data'));
-						$("#suggestions").fadeOut(1000);
-						return false;
-					});
-				}
-			});
+						/* Si se da click en cualquier sugerencia entonces
+						   se acompleta el valor de esta en el cuadro de búsqueda
+						*/
+						$(".suggest-element").on('click', function () {
+							var id = $(this).attr('id');
+							$("#searchtext").val($('#'+id).attr('data'));
+							$("#suggestions").fadeOut(250);
+							return false;
+						});
+					}
+				});
+			}else
+				$("#suggestions").fadeOut(100);
 		});
 
 		$("#btn-search").on('click', function (e) {

@@ -12,14 +12,14 @@
             $dep = $_POST['dep'];
 
             /* Preparando la consulta y ejecutándola */
-            $sql = "SELECT * FROM users
-                    INNER JOIN departments ON users.user_id=departments.user_id
-                    WHERE username = ?";
+            $sql = "SELECT * FROM departments
+                    INNER JOIN users ON departments.user_id = users.user_id
+                    WHERE department_name LIKE '%$dep%'";
             $stmt = $conn->prepare($sql);
-            $stmt->execute([$dep]);
+            $stmt->execute();
 
             /* Si se obtiene únicamente un resultado, entonces se retorna la información */
-            if($stmt->rowCount() === 1 ){
+            if($stmt->rowCount() === 1){
                 $dep = $stmt->fetch();
                 $array[] = $dep;
                 echo json_encode($array);

@@ -4,28 +4,31 @@
     # Verificando si el admin mantiene la sesión abierta
     if(isset($_SESSION['admin_id'])){
 
-        if(isset($_POST['question'])){
+        # Verificando si el nombre del admin fue enviado
+        if(isset($_POST['admin'])){
+
             # Realizando la conexión con la BD
             include '../db.conn.php';
 
-            # Obteniendo la pregunta a buscar
-            $question = $_POST['question'];
+            # Obteniendo el nombre del admin a buscar
+            $admin = $_POST['admin'];
 
             # Preparando el SQL y ejecutándolo
-            $sql = "SELECT * FROM xoochbot WHERE pregunta LIKE '%$question%'";
+            $sql = "SELECT * FROM admins WHERE username LIKE '%$admin%'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
 
             if($stmt->rowCount() > 0){
-                $preguntas = $stmt->fetchAll();                
+                $admins = $stmt->fetchAll();                
                 $html = '';
 
-                foreach($preguntas as $pregunta){
-                    $html .= '<div><a class="suggest-element" data= "'. $pregunta['pregunta'] .'" id="ques'. $pregunta['id'] .'">'. $pregunta['pregunta'] . '</a></div>';
+                foreach($admins as $admin){
+                    $html .= '<div><a class="suggest-element" data= "'. $admin['username'] .'" id="admin'. $admin['admin_id'] .'">'. $admin['username'] . '</a></div>';
                 }
                 echo $html;
             }
         }
+
     }else{
         header("Location: ../../index-admin.php");
         exit;
