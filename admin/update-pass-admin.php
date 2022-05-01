@@ -2,6 +2,9 @@
     session_start();
 
     if (isset($_SESSION['admin_id'])) {
+        
+        # Realizando la conexión con la BD
+        include '../app/db.conn.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,8 +38,31 @@
                             align-items-center
                             flex-column">
 
-                <img src="../img/logo.png"
-                    class="w-25">
+                <!-- INFORMACIÓN PERSONAL -->
+                <div class="mb-3">
+                    <h3 class="display-4 fs-1
+                        text-center">
+                        Informaci&oacute;n Personal</h3>
+                    <?php
+                        /* Preparando la consulta y ejecutándola */
+                        $sql = "SELECT name, username, email
+                                FROM admins
+                                WHERE admin_id = ?";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute([$_SESSION['admin_id']]);
+
+                        $admin = $stmt->fetch();
+                    ?>
+                    <label class="form-label">
+                        Nombre: <?php echo $admin['name']?></label>
+
+                    <label class="form-label">
+                        Username: <?php echo $admin['username']?></label>
+
+                    <label class="form-label">
+                        Email: <?php echo $admin['email']?></label>
+                </div>
+
                 <h3 class="display-4 fs-1
                         text-center">
                         Actualizar Contrase&ntilde;a</h3>
