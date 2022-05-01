@@ -66,18 +66,14 @@
                 <label class="form-label">
                     Pregunta</label>
                 <textarea name="question"
-                        class="form-control">
-                        <?=$question?>
-                </textarea>
+                        class="form-control"><?=$question?></textarea>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">
                     Respuesta</label>
                 <textarea name="answer"
-                    class="form-control">
-                    <?=$answer?>
-                </textarea>
+                    class="form-control"><?=$answer?></textarea>
             </div>
             
             <button type="submit" 

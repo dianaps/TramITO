@@ -36,22 +36,13 @@
             <a class="nav-link" href="search-dep.php">Buscar Dep</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Mi perfil</a>
+            <a class="nav-link" href="update-pass-admin.php">Mi perfil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contacto</a>
           </li>
-          
-          <!-- <li class="nav-item">
-            <img src="uploads/<?=$user['p_p']?>"
-    			         class="w-25 rounded-circle" alt="">
-             <a class="nav-link" href="#">Contacto</a>
-          </li> -->
-          <li>
-            </li>
           </ul>
-          <a href="../logout.php"
-          class="btn btn-light">Cerrar sesión</a>
+          <a href="../logout.php" class="btn btn-light">Cerrar sesión</a>
       </div>
     </div>
   </nav>

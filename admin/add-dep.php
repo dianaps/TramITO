@@ -28,7 +28,7 @@
             
         <div class="w-400 p-5 shadow rounded">
             <form method="post" 
-                action="#"
+                action="../app/http/insert-dep.php"
                 enctype="multipart/form-data">
                 <div class="d-flex
                             justify-content-center
@@ -105,10 +105,11 @@
                 <div class="mb-3">
                     <label class="form-label">
                         Correo electrónico</label>
-                    <input type="email"
+                    <input type="text"
                         class="form-control"
                         value="<?=$email?>"
                         name="email"
+                        placeholder="ejemplo@dominio.com"
                         id="email">
                 </div>
 
@@ -136,7 +137,7 @@
                         Informaci&oacute;n</label>
                     <textarea name="info"
                         class="form-control"
-                        id="info"></textarea>
+                        id="info"><?=$info?></textarea>
                 </div>
 
                 <div class="mb-3">
@@ -145,7 +146,9 @@
                     <input type="tel"
                         id="phone"
                         name="phone"
-                        value="<?=$phone?>" 
+                        value="<?=$phone?>"
+                        maxlength="10"
+                        placeholder="Ejemplo: 2721594785"
                         class="form-control">
                 </div>
 

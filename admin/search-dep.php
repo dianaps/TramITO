@@ -68,8 +68,8 @@
                         Usuario</label>
                     <input type="text"
                         class="form-control"
-                        name="username"
-                        id="username">
+                        name="username-dep"
+                        id="username-dep">
                 </div>
 
                 <div class="mb-3">
@@ -77,8 +77,8 @@
                         Correo electrónico</label>
                     <input type="email"
                         class="form-control"
-                        name="email"
-                        id="email">
+                        name="email-dep"
+                        id="email-dep">
                 </div>
 
                 <div class="mb-3">
@@ -137,15 +137,18 @@
         $("#error").css('display', 'none');
         $("#success").css('display', 'none');
 
-        /* Ocultando el id del Admin */
+        /* Ocultando el id del Dep */
 		$("#div-id").css('display', 'none');
 
         /* Función para vaciar el formulario */
         function emptyForm(){
-            $("#id_admin").val('');
-            $("#name-admin").val('');
-            $("#username-admin").val('');
-            $("#email-admin").val('');
+            $("#id-dep").val('');
+            $("#username-dep").val('');
+            $("#email-dep").val('');
+            $("#department").val('');
+            $('#info').val('');
+            $('#phone').val('');
+            $('#boss').val('');
         }
 
 		/* FUNCIÓN PARA OCULTAR EL MENSAJE DE ERROR */
@@ -160,6 +163,158 @@
 			setTimeout(function(){
 				$("#success").slideUp(2000); 
 			}, 2000);
+		}
+
+        $("#btn-search").on('click', function(e){
+            /* Se obtiene el nombre del admin a buscar */
+            $dep = $.trim($('#searchText').val());
+
+            if($dep == ''){
+                /* Se muestra el mensaje de error */
+                $("#error").css('display', 'block');
+                $("#error").text('El nombre del departamento a buscar es requerido');
+                hideErrorMsg();
+
+                /* Se vacía el formulario */
+                emptyForm();
+            } else 
+                getDepInfo($dep); /* Llamada a la función AJAX para traer los datos dinámicamente */
+
+            /* Se limpia el cuadro de búsqueda */
+            $("#searchText").val('');
+        });
+
+        function getDepInfo($dep){
+            $.ajax({
+                url: "../app/ajax/get-dep.php",
+                type: "POST",
+                data: {dep: $dep},
+                success: function (data){
+                    
+                    var result = jQuery.parseJSON(data);
+                    
+                    console.log(result);
+
+                    if(result.length == 1){
+                        /* Se muestran los datos en el formulario */
+                        $('#id-dep').val(result[0].user_id);
+                        $('#username-dep').val(result[0].username);
+                        $('#email-dep').val(result[0].email);
+                        $('#department').val(result[0].department_name);
+                        $('#info').val(result[0].info);
+                        $('#phone').val(result[0].tel);
+                        $('#boss').val(result[0].department_head);
+                    }else{
+						/* Al no obtener resultado, se vacía el formulario */
+						emptyForm();
+
+						/* Se muestra el mensaje de error */
+						$error = result[0] + " " + result[1];
+
+						$("#error").css('display', 'block');
+						$("#error").text($error);
+                        hideErrorMsg();
+					}
+                }
+            });
+        }
+
+        /* ACTUALIZACIÓN DEL DEPARTAMENTO */
+		$("#update").on('click', function (e) {
+
+            /* Eliminando los espacios en blanco */
+            $username = $.trim($('#username-dep').val());
+            $email = $.trim($('#email-dep').val());
+            $department = $.trim($('#department').val());
+            $info = $.trim($('#info').val());
+            $phone = $.trim($('#phone').val());
+            $boss = $.trim($('#boss').val());
+
+            /* Verificando espacios vacíos */
+            if($username == ''){
+                /* Se muestra el mensaje de error */
+                $("#error").css('display', 'block');
+                $("#error").text('El nombre de usuario no puede estar vacío.');
+                hideErrorMsg();
+            }else if($email == ''){
+                /* Se muestra el mensaje de error */
+                $("#error").css('display', 'block');
+                $("#error").text('El correo electrónico no puede estar vacío.');
+                hideErrorMsg();
+            }else if($department == ''){
+                /* Se muestra el mensaje de error */
+                $("#error").css('display', 'block');
+                $("#error").text('El departamento no puede estar vacío.');
+                hideErrorMsg();
+            }else if($info == ''){
+                /* Se muestra el mensaje de error */
+                $("#error").css('display', 'block');
+                $("#error").text('La información del departamento no puede estar vacía.');
+                hideErrorMsg();
+            }else if($phone == ''){
+                /* Se muestra el mensaje de error */
+                $("#error").css('display', 'block');
+                $("#error").text('El teléfono no puede estar vacío.');
+                hideErrorMsg();
+            }else if($boss == ''){
+                /* Se muestra el mensaje de error */
+                $("#error").css('display', 'block');
+                $("#error").text('El jede del departamento no puede estar vacío.');
+                hideErrorMsg();
+            }else
+                updateDep($username, $email, $department, $info, $phone, $boss);
+        });
+
+        function updateDep($username, $email, $department, $info, $phone, $boss){
+			/* Obteniendo el id del departamento */
+			$id_dep= $("#id-dep").val();
+
+			/* Otra forma de enviar los datos a través de HTTP */
+			$data = 'username='+$username+'&email='+$email+'&department='+$department+'&info='+$info+'&phone='+$phone+'&boss='+$boss+'&id-dep='+$id_dep;
+
+			$.ajax({
+				type: "POST",
+				url: "../app/ajax/update-dep.php",
+				data: $data,
+				success: function (response) {
+					$("#success").css('display', 'block');
+					$("#success").text(response);
+				
+					hideSuccessMsg();
+					emptyForm();
+				}
+			});
+		}
+
+        /* ELIMINACIÓN DEL DEPARTAMENTO */
+		$("#delete").on('click', function (e) {
+			/* Obteniendo el id del departamento para eliminar */
+			$id_dep= $("#id-dep").val();
+
+			/* Verificando que se haya buscado una pregunta previamente */
+			if($id_dep == ''){
+				/* Mostrando el mensaje de error */
+				$("#error").css('display', 'block');
+				$("#error").text('Debes buscar previamente un departamento a eliminar.');
+
+				hideErrorMsg();
+			}else
+				deleteAdmin($id_dep);
+		});
+
+        function deleteAdmin($id_dep){
+			$.ajax({
+				type: "POST",
+				url: "../app/ajax/delete-dep.php",
+				data: {id_dep: $id_dep},
+				success: function (response) {
+					$("#success").css('display', 'block');
+					$("#success").text(response);
+
+					hideSuccessMsg();
+					emptyForm();
+				}
+			});
 		}
     });
 </script>

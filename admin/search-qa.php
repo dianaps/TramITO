@@ -19,7 +19,7 @@
 	<?php include "header-admin.php"?>
 
 	<div class="p-5 text-center bg-light">
-		<h1 class="mb-3">Búsqueda Q&A</h1>
+		<h1 class="mb-3">B&uacute;squeda Q&A</h1>
 	</div>
 
 	<div class="d-flex
@@ -124,6 +124,21 @@
 		}
 		
 		/* BÚSQUEDA DE LA QA */
+
+		$("#searchtext").on('keyup', function () {
+			$searchtext = $(this).val();
+			$question = 'searchtext=' + searchtext;
+
+			$.ajax({
+				type: "POST",
+				url: "../app/ajax/predictive-qa.php",
+				data: {question: $question},
+				success: function (data) {
+					
+				}
+			});
+		});
+
 		$("#btn-search").on('click', function (e) {
 			/* Eliminando los espacios en blanco */
 			$question = $.trim($('#searchtext').val());

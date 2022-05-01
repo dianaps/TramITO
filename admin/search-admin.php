@@ -219,7 +219,6 @@
         function updateAdmin($nameAdmin, $usernameAdmin, $emailAdmin){
             /* Obteniendo el valor del id */
             $id_admin = $('#id_admin').val();
-            console.log($id_admin);
 
             /* Otra forma de enviar los datos a través de HTTP */
 			$data = 'nameAdmin='+$nameAdmin+'&usernameAdmin='+$usernameAdmin+'&emailAdmin='+$emailAdmin+'&id_admin='+$id_admin;

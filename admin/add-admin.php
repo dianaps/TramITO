@@ -103,7 +103,8 @@
                     <input type="text"
                         name="email"
                         value="<?=$email?>" 
-                        class="form-control">
+                        class="form-control"
+                        placeholder="ejemplo@dominio.com">
                 </div>
                 
                 <button type="submit" 
