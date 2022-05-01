@@ -891,7 +891,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
   `p_p` varchar(255) NOT NULL DEFAULT 'user-default.png',
-  `last_seen` date NOT NULL,
+  `last_seen` date NOT NULL DEFAULT current_timestamp(),
   `role` varchar(10) NOT NULL DEFAULT 'student'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
