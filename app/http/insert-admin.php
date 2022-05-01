@@ -109,7 +109,7 @@
                 header("Location: ../../admin/add-admin.php?success=$sm");
                 exit;
             }
-    }
+        }
     }else{
         header("Location: ../../index-admin.php");
         exit;

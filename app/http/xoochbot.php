@@ -1,26 +1,36 @@
 <?php
-session_start();
+    session_start();
 
-if (isset($_SESSION['username'])) {
- include '../db.conn.php';
- //Colocar mysql scape
- $mensajeUsuario = $_POST['mensaje'];
- $sql            = "SELECT * FROM xoochbot WHERE pregunta LIKE '%$mensajeUsuario%'";
- $stmt           = $conn->prepare($sql);
- $stmt->execute();
+    # Incluyendo el archivo que contiene los mensajes de error
+    include '../constants/messages.php';
 
- if ($stmt->rowCount() > 0) {
-  $respuestas = $stmt->fetchAll();
+    if (isset($_SESSION['username'])) {
 
-  foreach ($respuestas as $respuesta) {
-   echo $respuesta['respuesta'];
-  }
+        # Realizando la conexión con la BD
+        include '../db.conn.php';
 
- } else {
-  echo "Lo siento, no he logrado entenderte";
- }
+        # Obteniendo el mensaje de usuario
+        $mensajeUsuario = $_POST['mensaje'];
 
-} else {
- header("Location: ../../index.php");
- exit;
-}
+        # Realizando el SQL y ejecutándolo
+        $sql = "SELECT * 
+                FROM xoochbot 
+                WHERE pregunta LIKE '%$mensajeUsuario%'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $respuestas = $stmt->fetchAll();
+
+            foreach ($respuestas as $respuesta) {
+                echo $respuesta['respuesta'];
+            }
+
+        }else 
+            echo Messages::ERR_UNKNOWN_ANSWER;
+
+    }else{
+        header("Location: ../../index.php");
+        exit;
+    }
+?>

@@ -23,6 +23,7 @@ class Messages
  const ERR_UNKNOWN_ANSWER                 = "Lo siento, no he logrado entenderte";
  const ERR_USERNAME_ALREADY_EXISTS        = "Este usuario ya ha sido registrado, verifique su número de control";
  const ERR_EMAIL_ALREADY_EXISTS           = "Este correo electrónico ya ha sido registrado";
+ const ERR_INCORRECT_USERNAME_OR_EMAIL    = "El usuario o el email son incorrectos";
 
  // UPDATE PASSWORD
  const ERR_CURRENT_PASSWORD_REQUIRED     = "La contraseña actual es requerida";
@@ -47,4 +48,9 @@ class Messages
  const ERR_PHONE_FORMAT                         = "El teléfono debe estar conformado únicamente por 10 dígitos";
  const ERR_BOSS_DEPARTMENT_REQUIRED             = "El nombre del jefe de departmento es requerido";
  const ERR_USERNAME_DEPARTMENT_ALREADY_EXISTS   = "Este usuario ya ha sido registrado. Elija otro, por favor";
+
+ // XOOCHBOT QA
+ const ERR_QUESTION_REQUIRED    = "La pregunta es requerida";
+ const ERR_ANSWER_REQUIRED      = "La respuesta es requerida";
+ const SCS_ADD_QA               = "La pregunta-respuesta ha sido agregada correctamente";
 }

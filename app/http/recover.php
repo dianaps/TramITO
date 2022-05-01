@@ -1,27 +1,40 @@
 <?php
-    # Verifica si se han establecido las variables
-    if(isset($_POST['user-name']) && isset($_POST['email'])){ 
+
+    # Incluyendo el archivo que contiene los mensajes de error
+    include '../constants/messages.php';
+
+    # Verificando si se han establecido las variables
+    if(isset($_POST['username']) && 
+       isset($_POST['email'])){ 
         
         # Conexión a la BD
         include '../db.conn.php';
 
         # Se obtiene el valor de las variables
-        $username = $_POST['user-name'];
-        $email = $_POST['email'];
+        $username = trim($_POST['username']);
+        $email    = trim($_POST['email']);
 
         # Se forma la Data
         $data = 'username='.$username.'&email='.$email;
 
         if(empty($username)){
-            $em = 'El nombre de usuario es requerido';
+            # Mensaje de error
+            $em = Messages::ERR_USERNAME_REQUIRED;
+
+            # Redireccionando a 'restore-password' y pasando el mensaje de error
             header("Location: ../../restore-password.php?error=$em&$data");
    	        exit;
         }else if(empty($email)){
-            $em = 'El email es requerido';
+            # Mensaje de error
+            $em = Messages::ERR_EMAIL_REQUIRED;
+            
+            # Redireccionando a 'restore-password' y pasando el mensaje de error
             header("Location: ../../restore-password.php?error=$em&$data");
    	        exit;
         }else{
-            $sql = "SELECT * FROM users WHERE username = ? AND email = ?";
+            $sql = "SELECT * 
+                    FROM users 
+                    WHERE username = ? AND email = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$username, $email]);
 
@@ -38,14 +51,19 @@
 
                 $new_password = password_hash($new_password, PASSWORD_DEFAULT);
                 
-                $sql2 = "UPDATE users SET password = ? WHERE username = ? AND email = ?";
+                $sql2 = "UPDATE users 
+                         SET password = ? 
+                         WHERE username = ? AND email = ?";
                 $stmt2 = $conn->prepare($sql2);
                 $stmt2->execute([$new_password, $username, $email]);
 
       	        header("Location: ../../index.php?success=$sm");
    	            exit;
             }else{
-                $em = "El nombre de usuario o el email son incorrectos";
+                # Mensaje de error
+                $em = Messages::ERR_INCORRECT_USERNAME_OR_EMAIL;
+
+                # Redireccionando a 'restore-password' y pasando el mensaje de error
       	        header("Location: ../../restore-password.php?error=$em&$data");
    	            exit;
             }

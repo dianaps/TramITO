@@ -28,7 +28,7 @@
              vh-100">
         <div class="w-400 p-5 shadow rounded">
             <form method="post"
-                action="#"
+                action="../app/http/upd-pass-admin.php"
                 enctype="multipart/form-data">
                 <div class="d-flex
                             justify-content-center

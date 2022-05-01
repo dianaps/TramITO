@@ -20,7 +20,7 @@
             $new_password     =  trim($_POST['new-pass']);
             $conf_password    =  trim($_POST['conf-pass']);
     
-            # 
+            # Formando el URL
             $data = 'current_password='. $current_password . '&new_password=' . $new_password .
                     '&conf_password=' . $conf_password;
     
@@ -88,5 +88,8 @@
                 exit;
             }
         }
+    }else{
+        header("Location: ../../index.php");
+        exit;
     }
 ?>
