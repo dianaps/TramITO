@@ -11,8 +11,8 @@ class Messages
  const ERR_USER_NOT_FOUND                 = "El usuario %s no ha sido encontrado";
  const ERR_NAME_REQUIRED                  = "El nombre es requerido";
  const ERR_LAST_NAME_REQUIRED             = "Los apellidos son requeridos";
- const ERR_USERNAME_REQUIRED              = "El número de control es requerido";
- const ERR_FORMAT_USERNAME                = "El número de control está formado únicamente por 8 dígitos";
+ const ERR_ENROLLMENT_REQUIRED            = "El número de control es requerido";
+ const ERR_FORMAT_ENROLLMENT              = "El número de control está formado únicamente por 8 dígitos";
  const ERR_PASSWORD_REQUIRED              = "La contraseña es requerida";
  const ERR_CAREER_REQUIRED                = "La carrera es requerida";
  const ERR_SEMESTER_REQUIRED              = "El semestre es requerido";
@@ -24,7 +24,27 @@ class Messages
  const ERR_USERNAME_ALREADY_EXISTS        = "Este usuario ya ha sido registrado, verifique su número de control";
  const ERR_EMAIL_ALREADY_EXISTS           = "Este correo electrónico ya ha sido registrado";
 
- // SUCCESS
- const SCS_CREATION_ACCOUNT = "Cuenta creada exitosamente";
+ // UPDATE PASSWORD
+ const ERR_CURRENT_PASSWORD_REQUIRED     = "La contraseña actual es requerida";
+ const ERR_NEW_PASSWORD_REQUIRED         = "La contraseña nueva es requerida";
+ const ERR_CONFIRM_PASSWORD_REQUIRED     = "La confirmación de la contraseña es requerida";
+ const ERR_DIFFERENT_PASSWORDS_REQUIRED  = "La contraseña nueva no puede ser idéntica a la actual";
+ const ERR_DIFFERENT_PASSWORDS           = "Las contraseñas no coinciden";
+ const ERR_CURRENT_PASSWORD              = "La contraseña actual no es correcta";
+ const SCS_UPDATE_PASSWORD               = "La contraseña se ha actualizado correctamente";  
 
+ // SUCCESS
+ const SCS_CREATION_ACCOUNT     = "Cuenta creada exitosamente";
+ const SCS_CREATION_DEPARTMENT  = "Departamento creado exitosamente";
+ const SCS_CREATION_ADMIN       = "El administrador se ha registrado correctamente"; 
+
+ // ADMIN
+ const ERR_USERNAME_REQUIRED                    = "El nombre de usuario es requerido";
+ const ERR_USERNAME_ADMIN_ALREADY_EXISTS        = "Este nombre de usuario ya ha sido registrado";
+ const ERR_NAME_DEPARTMENT_REQUIRED             = "El nombre del departamento es requerido";
+ const ERR_INFO_DEPARTMENT_REQUIRED             = "La información del departamento es requerida";
+ const ERR_PHONE_DEPARTMENT_REQUIRED            = "El teléfono es requerido";
+ const ERR_PHONE_FORMAT                         = "El teléfono debe estar conformado únicamente por 10 dígitos";
+ const ERR_BOSS_DEPARTMENT_REQUIRED             = "El nombre del jefe de departmento es requerido";
+ const ERR_USERNAME_DEPARTMENT_ALREADY_EXISTS   = "Este usuario ya ha sido registrado. Elija otro, por favor";
 }

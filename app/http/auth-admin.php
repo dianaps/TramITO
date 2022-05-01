@@ -31,18 +31,18 @@ if(isset($_POST['username-admin']) &&
         # Si el usuario existe entonces se obtiene la información de estos
         if($stmt->rowCount() === 1){
         
-            $user = $stmt->fetch();
+            $admin = $stmt->fetch();
 
             # Verificando si ambos nombres de usuario son estrictamente iguales
-            if ($user['username'] === $username) {
+            if ($admin['username'] === $username) {
            
                 # Verificando el password encriptado
-                if (password_verify($password, $user['password'])) {
+                if (password_verify($password, $admin['password'])) {
 
                     # Al autentificarse correctamente se crean las variables de sesión
-                    $_SESSION['admin_id'] = $user['admin_id'];
-                    $_SESSION['name'] = $user['name'];
-                    $_SESSION['username'] = $user['username'];
+                    $_SESSION['admin_id']   = $admin['admin_id'];
+                    $_SESSION['name']       = $admin['name'];
+                    $_SESSION['username']   = $admin['username'];
 
                     # Se redirige el flujo a home-admin.php
                     header("Location: ../../admin/add-qa.php");

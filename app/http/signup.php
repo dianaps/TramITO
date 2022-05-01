@@ -10,7 +10,7 @@ if (isset($_POST['name']) &&
     isset($_POST['semester']) &&
     isset($_POST['email']) &&
     isset($_POST['password'])
-) {
+    ) {
 
     # database connection file
     include '../db.conn.php';
@@ -24,13 +24,13 @@ if (isset($_POST['name']) &&
     $email     = trim($_POST['email']);
     $password  = trim($_POST['password']);
     $role      = 'student';
-
+    
     # Expresión regular del correo electrónico
     $email_pattern = "/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/";
 
     # making URL data format
     $data = 'name=' . $name . '&last_name=' . $last_name . '&username=' . $username .
-        '&career=' . $career . '&semester=' . $semester . '&email=' . $email . '&password=' . $password;
+            '&career=' . $career . '&semester=' . $semester . '&email=' . $email . '&password=' . $password;
 
     #simple form Validation
     if (empty($name)) {
@@ -47,62 +47,62 @@ if (isset($_POST['name']) &&
         /*
         redirect to 'signup.php' and
         passing error message and data
-         */
+        */
         header("Location: ../../signup.php?error=$em&$data");
         exit;
-    } else if (empty($username)) {
+    } else if(empty($username)) {
         # error message
-        $em = Messages::ERR_USERNAME_REQUIRED;
+        $em = Messages::ERR_ENROLLMENT_REQUIRED;
 
         /*
         redirect to 'signup.php' and
         passing error message and data
-         */
+        */
         header("Location: ../../signup.php?error=$em&$data");
         exit;
-    } else if (!preg_match("/[0-9]{8}/", $username)) {
+    } else if(!preg_match("/[0-9]{8}/", $username)){
         # error message
-        $em = Messages::ERR_FORMAT_USERNAME;
+        $em = Messages::ERR_FORMAT_ENROLLMENT;
 
         /*
         redirect to 'signup.php' and
         passing error message and data
-         */
+        */
         header("Location: ../../signup.php?error=$em&$data");
         exit;
-    } else if (empty($career)) {
+    } else if(empty($career)){
         # error message
         $em = Messages::ERR_CAREER_REQUIRED;
 
         /*
         redirect to 'signup.php' and
         passing error message and data
-         */
+        */
         header("Location: ../../signup.php?error=$em&$data");
         exit;
-    } else if (empty($semester)) {
+    } else if (empty($semester)){
         # error message
-        $em = Messages::ERR_SEMESTER_REQUIRED;
+        $em = Messages::ERR_SEMESTER_REQUIRED ;
 
         /*
         redirect to 'signup.php' and
         passing error message and data
-         */
+        */
         header("Location: ../../signup.php?error=$em&$data");
         exit;
     } else if (empty($email)) {
         $em = Messages::ERR_EMAIL_REQUIRED;
         header("Location: ../../signup.php?error=$em&$data");
         exit;
-    } else if (!preg_match($email_pattern, $email)) {
+    } else if (!preg_match($email_pattern, $email)){
         # error message
         $em = Messages::ERR_FORMAT_EMAIL;
 
         /*
         redirect to 'signup.php' and
         passing error message and data
-         */
-
+        */
+        
         header("Location: ../../signup.php?error=$em&$data");
         exit;
     } else if (empty($password)) {
@@ -112,7 +112,7 @@ if (isset($_POST['name']) &&
         /*
         redirect to 'signup.php' and
         passing error message and data
-         */
+        */
         header("Location: ../../signup.php?error=$em&$data");
         exit;
     } else {
@@ -157,24 +157,24 @@ if (isset($_POST['name']) &&
                 /*
                 convert the image extension into lower case
                 and store it in var
-                 */
+                    */
                 $img_ex_lc = strtolower($img_ex);
 
                 /*
                 crating array that stores allowed
                 to upload image extension.
-                 */
+                    */
                 $allowed_exs = array("jpg", "jpeg", "png");
 
                 /*
                 check if the the image extension
                 is present in $allowed_exs array
-                 */
+                    */
                 if (in_array($img_ex_lc, $allowed_exs)) {
                     /*
                     renaming the image with user's username
                     like: username.$img_ex_lc
-                     */
+                    */
                     $new_img_name = $username . '.' . $img_ex_lc;
 
                     # crating upload path on root directory
@@ -182,7 +182,7 @@ if (isset($_POST['name']) &&
 
                     # move uploaded image to ./upload folder
                     move_uploaded_file($tmp_name, $img_upload_path);
-                } else {
+                }else {
                     $em = Messages::ERR_INCORRECT_FILE_EXTENSION;
                     header("Location: ../../signup.php?error=$em&$data");
                     exit;
@@ -196,12 +196,12 @@ if (isset($_POST['name']) &&
         # if the user upload Profile Picture
         if (isset($new_img_name)) {
 
-            # inserting data into database
-            $sql = "INSERT INTO users
-                            (username, password, p_p, email, role)
+        # inserting data into database
+        $sql = "INSERT INTO users
+                            (username, password, email, p_p, role)
                             VALUES (?,?,?,?,?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute([$username, $password, $new_img_name, $email, $role]);
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$username, $password, $email, $new_img_name, $role]);
 
         } else {
             # inserting data into database
@@ -221,7 +221,7 @@ if (isset($_POST['name']) &&
 
         $user = $stmt->fetch();
 
-        # Insertando al usuario en la tabla estudiantes
+        # Insertando al usuario en la tabla 'students'
         $sql = "INSERT INTO students
                             (user_id, name, last_name, semester, career)
                             VALUES (?,?,?,?,?)";
@@ -240,3 +240,4 @@ if (isset($_POST['name']) &&
     header("Location: ../../signup.php");
     exit;
 }
+?>
