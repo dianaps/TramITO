@@ -61,6 +61,12 @@ if (isset($_GET['new_password'])) {
  $new_password = '';
 }
 
+if (isset($_GET['conf_password'])) {
+    $conf_password = $_GET['conf_password'];
+   } else {
+    $conf_password = '';
+   }
+
 ?>
 
             <div class="mb-3">
@@ -86,7 +92,7 @@ if (isset($_GET['new_password'])) {
                     Confirma tu contraseña</label>
                 <input type="password"
                     class="form-control"
-                    value=""
+                    value="<?=$conf_password?>"
                     name="conf-pass">
             </div>
 

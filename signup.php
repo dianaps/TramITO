@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+# Arreglo de las carreras
+$careers = array('Ingeniería Eléctrica', 'Ingeniería Electrónica',
+				 'Ingeniería en Gestión Empresarial', 'Ingeniería Industrial',
+				 'Ingeniería Informática', 'Ingeniería Mecánica',
+				 'Ingeniería Química', 'Ingeniería en Sistemas Computacionales');
+
 if (!isset($_SESSION['username'])) {
  ?>
 
@@ -15,10 +21,10 @@ if (!isset($_SESSION['username'])) {
 	      href="css/style.css">
 	<link rel="icon" href="img/logo-buho.png">
 </head>
+
 <body class="d-flex
              justify-content-center
-             align-items-center
-             vh-100">
+             align-items-center">
 	 <div class="w-400 p-5 shadow rounded">
 	 	<form method="post"
 	 	      action="app/http/signup.php"
@@ -36,48 +42,34 @@ if (!isset($_SESSION['username'])) {
 	 		</div>
 
 	 		<?php if (isset($_GET['error'])) {?>
-	 		<div class="alert alert-warning" role="alert">
-			  <?php echo htmlspecialchars($_GET['error']); ?>
-			</div>
+	 			<div class="alert alert-warning" role="alert">
+			<?php echo htmlspecialchars($_GET['error']); ?>
+				</div>
 			<?php }
+				if (isset($_GET['name'])) {
+					$name = $_GET['name'];
+				} else { $name = ''; }
 
- if (isset($_GET['name'])) {
-  $name = $_GET['name'];
- } else {
-  $name = '';
- }
+				if (isset($_GET['last_name'])) {
+					$last_name = $_GET['last_name'];
+				} else { $last_name = ''; }
 
- if (isset($_GET['last_name'])) {
-  $last_name = $_GET['last_name'];
- } else {
-  $last_name = '';
- }
+				if (isset($_GET['username'])) {
+					$username = $_GET['username'];
+				} else { $username = ''; }
 
- if (isset($_GET['username'])) {
-  $username = $_GET['username'];
- } else {
-  $username = '';
- }
+				if (isset($_GET['career'])) {
+					$career = $_GET['career'];
+				} else { $career = ''; }
 
- if (isset($_GET['career'])) {
-  $career = $_GET['career'];
- } else {
-  $career = '';
- }
+				if (isset($_GET['semester'])) {
+					$semester = $_GET['semester'];
+				} else { $semester = ''; }
 
- if (isset($_GET['semester'])) {
-  $semester = $_GET['semester'];
- } else {
-  $semester = '';
- }
-
- if (isset($_GET['email'])) {
-  $email = $_GET['email'];
- } else {
-  $email = '';
- }
-
- ?>
+				if (isset($_GET['email'])) {
+					$email = $_GET['email'];
+				} else { $email = ''; }
+			?>
 
 	 	  <div class="mb-3">
 		    <label class="form-label">
@@ -98,45 +90,58 @@ if (!isset($_SESSION['username'])) {
 		  </div>
 
 		  <div class="mb-3">
-
-		  <!-- FALTA VALIDAR QUE SOLO SE PUEDAN INGRESAR 8 DÍGITOS -->
 		    <label class="form-label">
-		           Nombre de usuario (número de control)</label>
+		           N&uacute;mero de control</label>
 		    <input type="text"
 		           class="form-control"
 		           value="<?=$username?>"
 		           name="username"
-				   pattern="[0-9]{8}" title="El número de control contiene 8 dígitos">
+				   maxlength="8";
+				   title="El número de control contiene 8 dígitos">
 		  </div>
-		  <!--  -->
 
 		  <div class="mb-3">
 		    <label class="form-label">
 		           Carrera</label>
-		    <input type="text"
-		           name="career"
-		           value="<?=$career?>"
-		           class="form-control">
+			<select class="form-control" name="career">
+				<option value="">Selecciona una carrera...</option>
+				<?php
+					foreach ($careers as $car){
+						if($career == $car)
+							echo '<option value= "' . $car .'" selected>'. $car . '</option>';
+						else
+							echo '<option value= "' . $car .'">'. $car . '</option>';
+					}
+				?>
+			</select>
+
 		  </div>
 
 		  <div class="mb-3">
 		    <label class="form-label">
 		           Semestre</label>
-		    <input type="numeric"
-			min='0'
-			max='13'
-		           name="semester"
-		           value="<?=$semester?>"
-		           class="form-control">
+
+			<select class="form-control" name="semester">
+				<option value="">Selecciona un semestre...</option>
+				<?php
+					for ($i = 1; $i <= 12; $i++){
+						if($semester == $i)
+							echo '<option value="'. $i . '" selected>'. $i . '</option>';
+						else
+							echo '<option value="'. $i . '">'. $i . '</option>';
+					}
+				?>
+			</select>
 		  </div>
 
 		  <div class="mb-3">
 		    <label class="form-label">
 		           Correo electrónico</label>
-		    <input type="email"
+		    <input type="text"
 		           class="form-control"
 		           value="<?=$email?>"
-		           name="email">
+		           name="email"
+				   placeholder="ejemplo@dominio.com">
 		  </div>
 
 
