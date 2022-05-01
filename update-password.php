@@ -42,32 +42,29 @@
                     <div class="alert alert-warning" role="alert">
                 <?php echo htmlspecialchars($_GET['error']); ?>
                     </div>
-                <?php }
-if (isset($_GET['success'])) {?>
+                <?php } if (isset($_GET['success'])) {?>
                     <div class="alert alert-success" role="alert">
                 <?php echo htmlspecialchars($_GET['success']); ?>
                     </div>
 
-                <?php }
-if (isset($_GET['current_password'])) {
- $current_password = $_GET['current_password'];
-} else {
- $current_password = '';
-}
+                <?php } if (isset($_GET['current_password'])) {
+                    $current_password = $_GET['current_password'];
+                    } else {
+                    $current_password = '';
+                    }
 
-if (isset($_GET['new_password'])) {
- $new_password = $_GET['new_password'];
-} else {
- $new_password = '';
-}
+                    if (isset($_GET['new_password'])) {
+                    $new_password = $_GET['new_password'];
+                    } else {
+                    $new_password = '';
+                    }
 
-if (isset($_GET['conf_password'])) {
-    $conf_password = $_GET['conf_password'];
-   } else {
-    $conf_password = '';
-   }
-
-?>
+                    if (isset($_GET['conf_password'])) {
+                        $conf_password = $_GET['conf_password'];
+                    } else {
+                        $conf_password = '';
+                    }
+                ?>
 
             <div class="mb-3">
                 <label class="form-label">

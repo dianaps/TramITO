@@ -14,6 +14,21 @@
 	<link rel="icon" href="../img/logo.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<style>
+	#suggestions{
+		box-shadow: 2px 2px 8px 0 rgba(0,0,0,.2);
+    	height: auto;
+		z-index: 9999;
+	}
+	#suggestions .suggest-element {
+		background-color: white;
+		border-top: 1px solid #d6d4d4;
+		cursor: pointer;
+		padding: 8px;
+		width: 100%;
+		float: left;
+	}
+</style>
 <body class="">
 
 	<?php include "header-admin.php"?>
@@ -44,6 +59,7 @@
 							<i class="fa fa-search"></i>
 						</button>
 					</div>
+					<div id="suggestions"></div>
 				</div>
 
 				<!-- Mensaje de error -->
@@ -124,17 +140,23 @@
 		}
 		
 		/* BÚSQUEDA DE LA QA */
-
 		$("#searchtext").on('keyup', function () {
-			$searchtext = $(this).val();
-			$question = 'searchtext=' + searchtext;
+			var key = $(this).val();
+			var dataString = 'key=' + key;
 
 			$.ajax({
 				type: "POST",
 				url: "../app/ajax/predictive-qa.php",
-				data: {question: $question},
+				data: dataString,
 				success: function (data) {
-					
+					$("#suggestions").fadeIn(1000).html(data);
+
+					$(".suggest-element").on('click', function () {
+						var id = $(this).attr('id');
+						$("#searchtext").val($('#'+id).attr('data'));
+						$("#suggestions").fadeOut(1000);
+						return false;
+					});
 				}
 			});
 		});
