@@ -27,8 +27,7 @@
 
     <div class="d-flex
              justify-content-center
-             align-items-center
-             vh-100">
+             align-items-center">
         <div class="w-400 p-5 shadow rounded">
             <form method="post"
                 action="../app/http/upd-pass-admin.php"
@@ -54,13 +53,13 @@
                         $admin = $stmt->fetch();
                     ?>
                     <label class="form-label">
-                        Nombre: <?php echo $admin['name']?></label>
+                        <dt>Nombre:</dt><p class="text-muted"><?php echo $admin['name']?></p></label><br>
 
                     <label class="form-label">
-                        Username: <?php echo $admin['username']?></label>
+                        <dt>Username:</dt><p class="text-muted"><?php echo $admin['username']?></p></label><br>
 
                     <label class="form-label">
-                        Email: <?php echo $admin['email']?></label>
+                        <dt>Email:</dt><p class="text-muted"><?php echo $admin['email']?></p></label>
                 </div>
 
                 <h3 class="display-4 fs-1
