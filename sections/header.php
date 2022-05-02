@@ -14,7 +14,7 @@
     top: 0;
     left: 0;
     background-color: var(--beach-bg);
-    z-index: 6;
+    z-index: 10;
   }
   .hamburguer{
     background-color: transparent;

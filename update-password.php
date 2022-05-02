@@ -7,7 +7,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 	<link rel="stylesheet"
 	      href="css/style.css">
-	<link rel="icon" href="img/logo.png">
+	<link rel="icon" href="img/logo-buho.png">
 </head>
 
 <body>
@@ -42,29 +42,29 @@
                     <div class="alert alert-warning" role="alert">
                 <?php echo htmlspecialchars($_GET['error']); ?>
                     </div>
-                <?php } if (isset($_GET['success'])) {?>
+                <?php }if (isset($_GET['success'])) {?>
                     <div class="alert alert-success" role="alert">
                 <?php echo htmlspecialchars($_GET['success']); ?>
                     </div>
 
-                <?php } if (isset($_GET['current_password'])) {
-                    $current_password = $_GET['current_password'];
-                    } else {
-                    $current_password = '';
-                    }
+                <?php }if (isset($_GET['current_password'])) {
+ $current_password = $_GET['current_password'];
+} else {
+ $current_password = '';
+}
 
-                    if (isset($_GET['new_password'])) {
-                    $new_password = $_GET['new_password'];
-                    } else {
-                    $new_password = '';
-                    }
+if (isset($_GET['new_password'])) {
+ $new_password = $_GET['new_password'];
+} else {
+ $new_password = '';
+}
 
-                    if (isset($_GET['conf_password'])) {
-                        $conf_password = $_GET['conf_password'];
-                    } else {
-                        $conf_password = '';
-                    }
-                ?>
+if (isset($_GET['conf_password'])) {
+ $conf_password = $_GET['conf_password'];
+} else {
+ $conf_password = '';
+}
+?>
 
             <div class="mb-3">
                 <label class="form-label">
@@ -100,5 +100,9 @@
             </form>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 </body>
 </html>
