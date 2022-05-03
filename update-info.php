@@ -1,11 +1,16 @@
 <?php
-    session_start();
+session_start();
 
-    if(isset($_SESSION['username'])){
+if (isset($_SESSION['username'])) {
 
-        # Realizando la conexión hacia la BD
-        include 'app/db.conn.php';
-?>
+ # Realizando la conexión hacia la BD
+ include 'app/db.conn.php';
+
+ include 'app/helpers/user.php';
+
+ $user = getUser($_SESSION['user_id'], $_SESSION['role'], $conn);
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,26 +35,9 @@
              justify-content-center
              align-items-center">
         <div class="w-400 p-5 shadow rounded">
-            <?php if ($_SESSION['role'] == 'department'){ 
-                
-                # Preparando la consulta y ejecutándola
-                $sql = "SELECT * FROM departments
-                        INNER JOIN users ON departments.user_id = users.user_id
-                        WHERE departments.user_id = ?";
-                $stmt = $conn->prepare($sql);
-                $stmt->execute([$_SESSION['user_id']]);
 
-                # Obteniendo toda la información del departamento
-                $department = $stmt->fetch();
 
-                $username          = $department['username'];
-                $email             = $department['email'];
-                $department_name   = $department['department_name'];
-                $info              = $department['info'];
-                $boss              = $department['department_head'];
-            ?>
-
-            <form method="post"
+        <form method="post"
                 action="app/http/upd-info-dep.php"
                 enctype="multipart/form-data">
                 <div class="d-flex
@@ -57,7 +45,7 @@
                     align-items-center
                     flex-column">
 
-                <img src="img/logo-buho.png" 
+                <img src="img/logo-buho.png"
                      class="w-25">
                 </div>
 
@@ -68,13 +56,107 @@
 			        </div>
 
                 <!-- Mensaje de éxito -->
-			    <?php } if (isset($_GET['success'])) {?>
+			    <?php }if (isset($_GET['success'])) {?>
 	 		        <div class="alert alert-success" role="alert">
 			    <?php echo htmlspecialchars($_GET['success']); ?>
 			        </div>
 			    <?php }?>
 
-            
+            <?php if ($_SESSION['role'] == 'student') {
+
+  # Obteniendo toda la información del estudiante
+  //   $ncontrol = $user['username'];
+  //   $career     = $user['career'];
+  $name      = $user['name'];
+  $last_name = $user['last_name'];
+  $email     = $user['email'];
+  $semester  = $user['semester'];
+  ?>
+
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Nombre(s) </label>
+                    <input type="text"
+                        class="form-control"
+                        name="name"
+                        id="name"
+                        value="<?=$name?>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">
+                        Apellidos </label>
+                    <input type="text"
+                        class="form-control"
+                        name="last_name"
+                        id="last_name"
+                        value="<?=$last_name?>">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">
+                        Correo electrónico</label>
+                    <input type="email"
+                        class="form-control"
+                        name="email"
+                        id="email"
+                        value="<?=$email?>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">
+                        Semestre </label>
+                    <input type="numeric"
+                    min='0'
+                    max='8'
+                        class="form-control"
+                        name="semester"
+                        id="semester"
+                        value="<?=$semester?>">
+                </div>
+                <button type="submit"
+                    id="update"
+                    class="btn btn-primary">
+                    Actualizar</button>
+                <a href="profile.php">Cancelar</a>
+            </form>
+            <?php }?>
+
+            <?php if ($_SESSION['role'] == 'department') {
+
+  # Obteniendo toda la información del departamento
+  $username        = $user['username'];
+  $email           = $user['email'];
+  $department_name = $user['department_name'];
+  $info            = $user['info'];
+  $boss            = $user['department_head'];
+  ?>
+
+            <form method="post"
+                action="app/http/upd-info-dep.php"
+                enctype="multipart/form-data">
+                <div class="d-flex
+                    justify-content-center
+                    align-items-center
+                    flex-column">
+
+                <img src="img/logo-buho.png"
+                     class="w-25">
+                </div>
+
+                <!-- Mensaje de error -->
+                <?php if (isset($_GET['error'])) {?>
+	 		        <div class="alert alert-warning" role="alert">
+			    <?php echo htmlspecialchars($_GET['error']); ?>
+			        </div>
+
+                <!-- Mensaje de éxito -->
+			    <?php }if (isset($_GET['success'])) {?>
+	 		        <div class="alert alert-success" role="alert">
+			    <?php echo htmlspecialchars($_GET['success']); ?>
+			        </div>
+			    <?php }?>
+
+
                 <div class="mb-3">
                     <label class="form-label">
                         Usuario</label>
@@ -118,25 +200,25 @@
                         Jefe de departamento</label>
                     <input type="text"
                         id="boss"
-                        name="boss" 
+                        name="boss"
                         class="form-control"
                         value="<?=$boss?>">
                 </div>
 
-                <button type="submit" 
+                <button type="submit"
                     id="update"
                     class="btn btn-primary">
                     Actualizar</button>
                 <a href="profile.php">Cancelar</a>
             </form>
-            <?php } ?>
+            <?php }?>
 		</div>
     </div>
 </body>
 </html>
 <?php
-    }else{
-        header("Location: index.php");
-        exit;
-    }
+} else {
+ header("Location: index.php");
+ exit;
+}
 ?>
