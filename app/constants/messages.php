@@ -25,20 +25,21 @@ class Messages
  const ERR_EMAIL_ALREADY_EXISTS           = "Este correo electrónico ya ha sido registrado";
  const ERR_INCORRECT_USERNAME_OR_EMAIL    = "El usuario o el email son incorrectos";
  const SCS_INFO_UPDATE                    = "La información se ha actualizado correctamente";
+ const ERR_UPDATE_PROFILE_PICTURE         = 'Ocurrió un error al subir la imagen de perfil';
 
  // UPDATE PASSWORD
- const ERR_CURRENT_PASSWORD_REQUIRED     = "La contraseña actual es requerida";
- const ERR_NEW_PASSWORD_REQUIRED         = "La contraseña nueva es requerida";
- const ERR_CONFIRM_PASSWORD_REQUIRED     = "La confirmación de la contraseña es requerida";
- const ERR_DIFFERENT_PASSWORDS_REQUIRED  = "La contraseña nueva no puede ser idéntica a la actual";
- const ERR_DIFFERENT_PASSWORDS           = "Las contraseñas no coinciden";
- const ERR_CURRENT_PASSWORD              = "La contraseña actual no es correcta";
- const SCS_UPDATE_PASSWORD               = "La contraseña se ha actualizado correctamente";  
+ const ERR_CURRENT_PASSWORD_REQUIRED    = "La contraseña actual es requerida";
+ const ERR_NEW_PASSWORD_REQUIRED        = "La contraseña nueva es requerida";
+ const ERR_CONFIRM_PASSWORD_REQUIRED    = "La confirmación de la contraseña es requerida";
+ const ERR_DIFFERENT_PASSWORDS_REQUIRED = "La contraseña nueva no puede ser idéntica a la actual";
+ const ERR_DIFFERENT_PASSWORDS          = "Las contraseñas no coinciden";
+ const ERR_CURRENT_PASSWORD             = "La contraseña actual no es correcta";
+ const SCS_UPDATE_PASSWORD              = "La contraseña se ha actualizado correctamente";
 
  // SUCCESS
- const SCS_CREATION_ACCOUNT     = "Cuenta creada exitosamente";
- const SCS_CREATION_DEPARTMENT  = "Departamento creado exitosamente";
- const SCS_CREATION_ADMIN       = "El administrador se ha registrado correctamente"; 
+ const SCS_CREATION_ACCOUNT    = "Cuenta creada exitosamente";
+ const SCS_CREATION_DEPARTMENT = "Departamento creado exitosamente";
+ const SCS_CREATION_ADMIN      = "El administrador se ha registrado correctamente";
 
  // ADMIN
  const ERR_USERNAME_REQUIRED                    = "El nombre de usuario es requerido";
@@ -56,7 +57,7 @@ class Messages
  const ERR_QA_DOESNT_EXIST                      = "No se encontró la pregunta solicitada. Inténtalo de nuevo";
 
  // XOOCHBOT QA
- const ERR_QUESTION_REQUIRED    = "La pregunta es requerida";
- const ERR_ANSWER_REQUIRED      = "La respuesta es requerida";
- const SCS_ADD_QA               = "La pregunta-respuesta ha sido agregada correctamente";
+ const ERR_QUESTION_REQUIRED = "La pregunta es requerida";
+ const ERR_ANSWER_REQUIRED   = "La respuesta es requerida";
+ const SCS_ADD_QA            = "La pregunta-respuesta ha sido agregada correctamente";
 }
