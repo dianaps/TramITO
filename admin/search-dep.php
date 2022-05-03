@@ -115,15 +115,6 @@
 
                 <div class="mb-3">
                     <label class="form-label">
-                        Tel&eacute;fono</label>
-                    <input type="tel"
-                        id="phone"
-                        name="phone"
-                        class="form-control">
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">
                         Jefe de departamento</label>
                     <input type="text"
                         id="boss"
@@ -139,7 +130,10 @@
                     id="delete"
                     class="btn btn-danger">
         	        Eliminar</button>
-            	<a href="#">Cancelar</a>
+                <button type="button"
+                    id="reset"
+                    class="btn btn-primary">
+                    Cancelar</button>
 		</div>
     </div>
 
@@ -147,6 +141,10 @@
 
 <script>
     $(document).ready(function () {
+
+        $("#reset").click(function(){
+            emptyForm();
+        });
 
         /* Ocultando el mensaje de error y éxito*/
         $("#error").css('display', 'none');
@@ -162,7 +160,6 @@
             $("#email-dep").val('');
             $("#department").val('');
             $('#info').val('');
-            $('#phone').val('');
             $('#boss').val('');
         }
 
@@ -237,27 +234,22 @@
                 success: function (data){
                     
                     var result = jQuery.parseJSON(data);
-                    
-                    console.log(result);
 
-                    if(result.length == 1){
+                    if(!result.hasOwnProperty('error')){
                         /* Se muestran los datos en el formulario */
-                        $('#id-dep').val(result[0].user_id);
-                        $('#username-dep').val(result[0].username);
-                        $('#email-dep').val(result[0].email);
-                        $('#department').val(result[0].department_name);
-                        $('#info').val(result[0].info);
-                        $('#phone').val(result[0].tel);
-                        $('#boss').val(result[0].department_head);
+                        $('#id-dep').val(result.user_id);
+                        $('#username-dep').val(result.username);
+                        $('#email-dep').val(result.email);
+                        $('#department').val(result.department_name);
+                        $('#info').val(result.info);
+                        $('#boss').val(result.department_head);
                     }else{
 						/* Al no obtener resultado, se vacía el formulario */
 						emptyForm();
 
 						/* Se muestra el mensaje de error */
-						$error = result[0] + " " + result[1];
-
 						$("#error").css('display', 'block');
-						$("#error").text($error);
+						$("#error").text(result.error);
                         hideErrorMsg();
 					}
                 }
@@ -272,7 +264,6 @@
             $email = $.trim($('#email-dep').val());
             $department = $.trim($('#department').val());
             $info = $.trim($('#info').val());
-            $phone = $.trim($('#phone').val());
             $boss = $.trim($('#boss').val());
 
             /* Verificando espacios vacíos */
@@ -296,37 +287,42 @@
                 $("#error").css('display', 'block');
                 $("#error").text('La información del departamento no puede estar vacía.');
                 hideErrorMsg();
-            }else if($phone == ''){
-                /* Se muestra el mensaje de error */
-                $("#error").css('display', 'block');
-                $("#error").text('El teléfono no puede estar vacío.');
-                hideErrorMsg();
             }else if($boss == ''){
                 /* Se muestra el mensaje de error */
                 $("#error").css('display', 'block');
-                $("#error").text('El jede del departamento no puede estar vacío.');
+                $("#error").text('El jefe del departamento no puede estar vacío.');
                 hideErrorMsg();
             }else
-                updateDep($username, $email, $department, $info, $phone, $boss);
+                updateDep($username, $email, $department, $info, $boss);
         });
 
-        function updateDep($username, $email, $department, $info, $phone, $boss){
+        function updateDep($username, $email, $department, $info, $boss){
 			/* Obteniendo el id del departamento */
 			$id_dep= $("#id-dep").val();
 
 			/* Otra forma de enviar los datos a través de HTTP */
-			$data = 'username='+$username+'&email='+$email+'&department='+$department+'&info='+$info+'&phone='+$phone+'&boss='+$boss+'&id-dep='+$id_dep;
+			$data = 'username='+$username+'&email='+$email+'&department='+$department+'&info='+$info+'&boss='+$boss+'&id-dep='+$id_dep;
 
 			$.ajax({
 				type: "POST",
 				url: "../app/ajax/update-dep.php",
 				data: $data,
 				success: function (response) {
-					$("#success").css('display', 'block');
-					$("#success").text(response);
+
+                    var result = jQuery.parseJSON(response);
+                    console.log(result);
+
+                    if(!result.hasOwnProperty('error')){
+                        $("#success").css('display', 'block');
+					    $("#success").text(result.success);
 				
-					hideSuccessMsg();
-					emptyForm();
+                        hideSuccessMsg();
+                        emptyForm();
+                    }else{
+						$("#error").css('display', 'block');
+						$("#error").text(result.error);
+                        hideErrorMsg();
+					}					
 				}
 			});
 		}

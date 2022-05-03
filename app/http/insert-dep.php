@@ -14,7 +14,6 @@
            isset($_POST['email']) &&
            isset($_POST['department']) &&
            isset($_POST['info']) &&
-           isset($_POST['phone']) &&
            isset($_POST['boss'])){
 
             # Estableciendo la conexión con la BD
@@ -26,7 +25,6 @@
             $email      = trim($_POST['email']);
             $department = trim($_POST['department']);
             $info       = trim($_POST['info']);
-            $phone      = trim($_POST['phone']);
             $boss       = trim($_POST['boss']);
             $role       = 'department';
 
@@ -35,7 +33,7 @@
 
             # Elaborando el formato de la URL para devolver datos
             $data = 'username=' . $username . '&password=' . $password . '&email=' . $email .
-                    '&department=' . $department . '&info=' . $info . '&phone=' . $phone . '&boss=' . $boss;
+                    '&department=' . $department . '&info=' . $info . '&boss=' . $boss;
 
             # Validación de los de datos enviados en el formulario
             if(empty($username)){
@@ -76,20 +74,6 @@
             }else if(empty($info)){
                 # Mensaje de error
                 $em = Messages::ERR_INFO_DEPARTMENT_REQUIRED;
-
-                # Redireccionando a 'add-dep' y pasando el mensaje de rror
-                header("Location: ../../admin/add-dep.php?error=$em&$data");
-                exit;
-            }else if(empty($phone)){
-                # Mensaje de error
-                $em = Messages::ERR_PHONE_DEPARTMENT_REQUIRED;
-
-                # Redireccionando a 'add-dep' y pasando el mensaje de rror
-                header("Location: ../../admin/add-dep.php?error=$em&$data");
-                exit;
-            }else if(!preg_match("/[0-9]{10}/", $phone)){
-                # Mensaje de error
-                $em = Messages::ERR_PHONE_FORMAT;
 
                 # Redireccionando a 'add-dep' y pasando el mensaje de rror
                 header("Location: ../../admin/add-dep.php?error=$em&$data");
@@ -209,11 +193,11 @@
 
                 # Insertando al usuario en la tabla 'departments'
                 $sql = "INSERT INTO departments
-                                    (user_id, department_name, info, tel, department_head)
-                                    VALUES (?,?,?,?,?)";
+                                    (user_id, department_name, info, department_head)
+                                    VALUES (?,?,?,,?)";
 
                 $stmt = $conn->prepare($sql);
-                $stmt->execute([$user['user_id'], $department, $info, $phone, $boss]);
+                $stmt->execute([$user['user_id'], $department, $info, $boss]);
 
                 # Mensaje de éxito
                 $sm = Messages::SCS_CREATION_DEPARTMENT;

@@ -101,7 +101,10 @@
                 	id="delete"	
 					class="btn btn-danger">
         	        Eliminar</button>
-            	<a href="#">Cancelar</a>
+				<button type="button"
+                    id="reset"
+                    class="btn btn-primary">
+                    Cancelar</button>
 		</div>
     </div>
 
@@ -109,6 +112,10 @@
 
 <script>
 	$(document).ready(function () {
+
+		$("#reset").click(function(){
+            emptyForm();
+        });
 
 		/* Ocultando los mensajes de error y éxito*/
 		$("#error").css('display', 'none');
@@ -204,21 +211,19 @@
 					/* Función que toma un string JSON y lo convierte en un arreglo JS de objetos */
 					var result = jQuery.parseJSON(data);
 
-					if(result.length == 1){
+					if(!result.hasOwnProperty('error')){
 						/* Como se ha obtenido un arreglo, se accede a los valores a través de índices */
-						$('#id_qa').val(result[0].id);
-						$('#question').val(result[0].pregunta);
-						$('#answer').val(result[0].respuesta);
+						$('#id_qa').val(result.id);
+						$('#question').val(result.pregunta);
+						$('#answer').val(result.respuesta);
 					}
 					else{
 						/* Al no obtener la QA se deben borra el formulario */
 						emptyForm();
 
 						/* Se muestra el mensaje de error */
-						$error = result[0] + " " + result[1];
-
 						$("#error").css('display', 'block');
-						$("#error").text($error);
+						$("#error").text(result.error);
 						hideErrorMsg();
 					}
 				}

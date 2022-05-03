@@ -19,9 +19,9 @@
 	<!-- Encabezado -->
 
     <div class="d-flex
-             justify-content-center
-             align-items-center
-             vh-100">
+        justify-content-center
+        align-items-center
+        vh-100">
         <div class="w-400 p-5 shadow rounded">
             <form method="post"
                 action="app/http/upd-pass.php"
@@ -31,7 +31,7 @@
                             align-items-center
                             flex-column">
 
-                <img src="img/logo.png"
+                <img src="img/logo-buho.png"
                     class="w-25">
                 <h3 class="display-4 fs-1
                         text-center">
@@ -48,55 +48,55 @@
                     </div>
 
                 <?php }if (isset($_GET['current_password'])) {
- $current_password = $_GET['current_password'];
-} else {
- $current_password = '';
-}
+                    $current_password = $_GET['current_password'];
+                    } else {
+                    $current_password = '';
+                    }
 
-if (isset($_GET['new_password'])) {
- $new_password = $_GET['new_password'];
-} else {
- $new_password = '';
-}
+                    if (isset($_GET['new_password'])) {
+                    $new_password = $_GET['new_password'];
+                    } else {
+                    $new_password = '';
+                    }
 
-if (isset($_GET['conf_password'])) {
- $conf_password = $_GET['conf_password'];
-} else {
- $conf_password = '';
-}
-?>
+                    if (isset($_GET['conf_password'])) {
+                    $conf_password = $_GET['conf_password'];
+                    } else {
+                    $conf_password = '';
+                    }
+                ?>
 
-            <div class="mb-3">
-                <label class="form-label">
-                    Contraseña actual</label>
-                <input type="password"
-                    name="act-pass"
-                    value="<?=$current_password?>"
-                    class="form-control">
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">
+                        Contraseña actual</label>
+                    <input type="password"
+                        name="act-pass"
+                        value="<?=$current_password?>"
+                        class="form-control">
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label">
-                    Nueva contraseña</label>
-                <input type="password"
-                    class="form-control"
-                    value="<?=$new_password?>"
-                    name="new-pass">
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">
+                        Nueva contraseña</label>
+                    <input type="password"
+                        class="form-control"
+                        value="<?=$new_password?>"
+                        name="new-pass">
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label">
-                    Confirma tu contraseña</label>
-                <input type="password"
-                    class="form-control"
-                    value="<?=$conf_password?>"
-                    name="conf-pass">
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">
+                        Confirma tu contraseña</label>
+                    <input type="password"
+                        class="form-control"
+                        value="<?=$conf_password?>"
+                        name="conf-pass">
+                </div>
 
-            <button type="submit"
-                    class="btn btn-primary">
-                    Confirmar</button>
-            <a href="index.php">Cancelar</a>
+                <button type="submit"
+                        class="btn btn-primary">
+                        Confirmar</button>
+                <a href="profile.php">Cancelar</a>
             </form>
         </div>
     </div>

@@ -8,20 +8,21 @@
             # Se realiza la conexión a la BD
             include '../db.conn.php';
 
+            # Incluyendo el archivo que contiene los mensajes
+            include '../constants/messages.php';
+
             $question = $_POST['question'];
-            $sql = "SELECT * FROM xoochbot WHERE pregunta LIKE '%$question%'";
+            $sql = "SELECT * 
+                    FROM xoochbot 
+                    WHERE pregunta LIKE '%$question%'";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
 
-            if($stmt->rowCount() === 1 ){
+            if($stmt->rowCount() === 1){
                 $respuesta = $stmt->fetch();
-                $array[] = $respuesta;
-                echo json_encode($array);
-            }else{
-                $array[] = "No se encontró la pregunta solicitada.";
-                $array[] = "Intenta de nuevo.";
-                echo json_encode($array);
-            }
+                echo json_encode($respuesta);
+            }else
+                echo '{ "error": "'. Messages::ERR_QA_DOESNT_EXIST  .'" }';
         }
     }else{
         header("Location: ../../index-admin.php");

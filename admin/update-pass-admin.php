@@ -94,37 +94,37 @@
                     }
                 ?>
 
-            <div class="mb-3">
-                <label class="form-label">
-                    Contrase&ntilde;a actual</label>
-                <input type="password"
-                    name="act-pass"
-                    value="<?=$current_password?>"
-                    class="form-control">
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">
+                        Contrase&ntilde;a actual</label>
+                    <input type="password"
+                        name="act-pass"
+                        value="<?=$current_password?>"
+                        class="form-control">
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label">
-                    Nueva contrase&ntilde;a</label>
-                <input type="password"
-                    class="form-control"
-                    value="<?=$new_password?>"
-                    name="new-pass">
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">
+                        Nueva contrase&ntilde;a</label>
+                    <input type="password"
+                        class="form-control"
+                        value="<?=$new_password?>"
+                        name="new-pass">
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label">
-                    Confirma tu contrase&ntilde;a</label>
-                <input type="password"
-                    class="form-control"
-                    value="<?=$conf_password?>"
-                    name="conf-pass">
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">
+                        Confirma tu contrase&ntilde;a</label>
+                    <input type="password"
+                        class="form-control"
+                        value="<?=$conf_password?>"
+                        name="conf-pass">
+                </div>
 
-            <button type="submit"
-                    class="btn btn-primary">
-                    Confirmar</button>
-            <a href="#">Cancelar</a>
+                <button type="submit"
+                        class="btn btn-primary">
+                        Confirmar</button>
+                <a href="#">Cancelar</a>
             </form>
         </div>
     </div>

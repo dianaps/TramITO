@@ -12,11 +12,13 @@
             $id_dep = $_POST['id_dep'];
 
             # Preparando la eliminación y ejecutándola
-            $sql = "DELETE FROM departments WHERE user_id = ?";
+            $sql = "DELETE FROM departments 
+                    WHERE user_id = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$id_dep]);
 
-            $sql = "DELETE FROM users WHERE user_id = ?";
+            $sql = "DELETE FROM users
+                    WHERE user_id = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$id_dep]);
 

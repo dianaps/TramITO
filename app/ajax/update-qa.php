@@ -4,7 +4,9 @@
 
     if(isset($_SESSION['admin_id'])){
 
-        if(isset($_POST['id_qa']) && isset($_POST['question']) && isset($_POST['answer'])){
+        if(isset($_POST['id_qa']) && 
+           isset($_POST['question']) && 
+           isset($_POST['answer'])){
             # Realizando la conexión hacia la BD
             include '../db.conn.php';
 
@@ -14,7 +16,9 @@
             $answer = $_POST['answer'];
 
             # Preparando la actualización y ejecutándola
-            $sql = "UPDATE xoochbot SET pregunta = ?, respuesta = ? WHERE id = ?";
+            $sql = "UPDATE xoochbot 
+                    SET pregunta = ?, respuesta = ? 
+                    WHERE id = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$question, $answer, $id_qa]);
 
