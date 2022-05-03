@@ -62,27 +62,39 @@
                     }else $answer = '';
                 ?>
 
-            <div class="mb-3">
-                <label class="form-label">
-                    Pregunta</label>
-                <textarea name="question"
-                        class="form-control"><?=$question?></textarea>
-            </div>
+                <div class="mb-3">
+                    <label class="form-label">
+                        Pregunta</label>
+                    <textarea name="question"
+                            class="form-control"><?=$question?></textarea>
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label">
-                    Respuesta</label>
-                <textarea name="answer"
-                    class="form-control"><?=$answer?></textarea>
-            </div>
-            
-            <button type="submit" 
+                <div class="mb-3">
+                    <label class="form-label">
+                        Respuesta</label>
+                    <textarea name="answer"
+                        class="form-control"><?=$answer?></textarea>
+                </div>
+                
+                <button type="submit" 
                     class="btn btn-success">
                     Aceptar</button>
-            <a href="#">Cancelar</a>
+                <!--Corregir el cancelar, no funciona al obtener un error-->
+                <input type="reset" 
+                    id="cancel"
+                    value="Cancelar"
+                    class="btn btn-danger">
             </form>
         </div>
     </div>
+
+<script>
+    $(document).ready(function(){
+        $("#cancel").click(function(){
+            $(":textarea").text('');
+        });
+    });
+</script>
 </body>
 </html>
 <?php

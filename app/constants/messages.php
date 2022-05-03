@@ -49,6 +49,11 @@ class Messages
  const ERR_PHONE_FORMAT                         = "El teléfono debe estar conformado únicamente por 10 dígitos";
  const ERR_BOSS_DEPARTMENT_REQUIRED             = "El nombre del jefe de departmento es requerido";
  const ERR_USERNAME_DEPARTMENT_ALREADY_EXISTS   = "Este usuario ya ha sido registrado. Elija otro, por favor";
+ const ERR_DEPARTMENT_DOESNT_EXIST              = "El departamento no existe. Inténtalo de nuevo";
+ const SCS_UPDATE_DEPARTMENT                    = "El departamento se ha actualizado correctamente";
+ const ERR_ADMIN_DOESNT_EXIST                   = "El administrador no existe. Inténtalo de nuevo";
+ const SCS_UPDATE_ADMIN                         = "El administrador se ha actualizado correctamente";
+ const ERR_QA_DOESNT_EXIST                      = "No se encontró la pregunta solicitada. Inténtalo de nuevo";
 
  // XOOCHBOT QA
  const ERR_QUESTION_REQUIRED    = "La pregunta es requerida";

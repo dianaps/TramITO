@@ -113,7 +113,10 @@
                     id="delete"
                     class="btn btn-danger">
         	        Eliminar</button>
-            	<a href="#">Cancelar</a>
+                <button type="button"
+                    id="reset"
+                    class="btn btn-primary">
+                    Cancelar</button>
 		</div>
     </div>
 
@@ -121,6 +124,10 @@
 
 <script>
     $(document).ready(function () {
+
+        $("#reset").click(function(){
+            emptyForm();
+        });
 
         /* Ocultando el mensaje de error y éxito*/
         $("#error").css('display', 'none');
@@ -210,22 +217,19 @@
 
                     var result = jQuery.parseJSON(data);
 
-					if(result.length == 1){
+					if(!result.hasOwnProperty('error')){
 						/* Se muestran los datos en el formulario */ 
-                        $('#id_admin').val(result[0].admin_id);
-						$("#name-admin").val(result[0].name);
-                        $("#username-admin").val(result[0].username);
-                        $("#email-admin").val(result[0].email);
-
+                        $('#id_admin').val(result.admin_id);
+						$("#name-admin").val(result.name);
+                        $("#username-admin").val(result.username);
+                        $("#email-admin").val(result.email);
 					}else{
 						/* Al no obtener resultado, se vacía el formulario */
 						emptyForm();
 
 						/* Se muestra el mensaje de error */
-						$error = result[0] + " " + result[1];
-
 						$("#error").css('display', 'block');
-						$("#error").text($error);
+						$("#error").text(result.error);
                         hideErrorMsg();
 					}
                 }
@@ -273,11 +277,19 @@
                 url: "../app/ajax/update-admin.php",
                 data: $data,
                 success: function (response) {
-                    $("#success").css('display', 'block');
-                    $("#success").text(response);
+                    var result = jQuery.parseJSON(response);
 
-                    hideSuccessMsg();
-                    emptyForm();
+                    if(!result.hasOwnProperty('error')){
+                        $("#success").css('display', 'block');
+					    $("#success").text(result.success);
+				
+                        hideSuccessMsg();
+                        emptyForm();
+                    }else{
+						$("#error").css('display', 'block');
+						$("#error").text(result.error);
+                        hideErrorMsg();
+					}
                 }
             });
         }
