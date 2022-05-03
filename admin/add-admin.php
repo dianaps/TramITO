@@ -75,6 +75,7 @@
                         Nombre</label>
                     <input type="text"
                         name="name"
+                        id="name"
                         value="<?=$name?>" 
                         class="form-control">
                 </div>
@@ -83,6 +84,7 @@
                     <label class="form-label">
                         Usuario</label>
                     <input type="text"
+                        id="username"
                         name="username"
                         value="<?=$username?>" 
                         class="form-control">
@@ -92,6 +94,7 @@
                     <label class="form-label">
                         Contraseña</label>
                     <input type="password"
+                        id="password"
                         name="password"
                         value="<?=$password?>" 
                         class="form-control">
@@ -101,6 +104,7 @@
                     <label class="form-label">
                         Correo</label>
                     <input type="text"
+                        id="email"
                         name="email"
                         value="<?=$email?>" 
                         class="form-control"
@@ -110,10 +114,26 @@
                 <button type="submit" 
                         class="btn btn-success">
                         Aceptar</button>
-                <a href="#">Cancelar</a>
+                <button type="button"
+                    class="btn btn-danger"
+                    id="cancel">
+                    Cancelar</button>
             </form>
         </div>
     </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $("#cancel").on('click', function () {
+            $("#name").val('');
+			$("#username").val('');
+            $("#password").val('');
+            $("#email").val('');
+        });
+    });
+</script>
 </body>
 </html>
 <?php

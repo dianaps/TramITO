@@ -27,7 +27,7 @@
              align-items-center
              vh-100">
         <div class="w-400 p-5 shadow rounded">
-            <form method="post" 
+            <form method="post"
                 action="../app/http/insert-qa.php"
                 enctype="multipart/form-data">
                 <div class="d-flex
@@ -66,32 +66,36 @@
                     <label class="form-label">
                         Pregunta</label>
                     <textarea name="question"
-                            class="form-control"><?=$question?></textarea>
+                        id="question"
+                        class="form-control"><?=$question?></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">
                         Respuesta</label>
                     <textarea name="answer"
+                        id="answer"
                         class="form-control"><?=$answer?></textarea>
                 </div>
                 
                 <button type="submit" 
                     class="btn btn-success">
                     Aceptar</button>
-                <!--Corregir el cancelar, no funciona al obtener un error-->
-                <input type="reset" 
-                    id="cancel"
-                    value="Cancelar"
-                    class="btn btn-danger">
+                <button type="button"
+                    class="btn btn-danger"
+                    id="cancel">
+                    Cancelar</button>
             </form>
         </div>
     </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function(){
-        $("#cancel").click(function(){
-            $(":textarea").text('');
+    $(document).ready(function () {
+
+        $("#cancel").on('click', function () {
+            $("#question").val('');
+			$("#answer").val('');
         });
     });
 </script>

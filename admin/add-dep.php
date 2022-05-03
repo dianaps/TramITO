@@ -149,10 +149,29 @@
                 <button type="submit" 
                         class="btn btn-success">
                         Aceptar</button>
-                <a href="#">Cancelar</a>
+                <button type="button"
+                    class="btn btn-danger"
+                    id="cancel">
+                    Cancelar</button>
             </form>
         </div>
     </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $("#cancel").on('click', function () {
+			$("#username").val('');
+            $("#password").val('');
+            $("#email").val('');
+            $("#pp").val('');
+			$("#department").val('');
+            $("#info").val('');
+            $("#boss").val('');
+        });
+    });
+</script>
 </body>
 </html>
 <?php

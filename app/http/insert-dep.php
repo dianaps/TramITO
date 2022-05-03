@@ -41,7 +41,7 @@
                 $em = Messages::ERR_USERNAME_REQUIRED;
 
                 # Redireccionando a 'add-dep' y pasando el mensaje de error
-                header("Location: ../../admin/add-dep.php?error=$em");
+                header("Location: ../../admin/add-dep.php?error=$em&$data");
                 exit;
             }else if(empty($password)){
                 # Mensaje de error

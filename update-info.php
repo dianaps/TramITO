@@ -37,7 +37,7 @@ if (isset($_SESSION['username'])) {
         <div class="w-400 p-5 shadow rounded">
 
         <form method="post"
-                action="app/http/upd-info-dep.php"
+                action="app/http/upd-info.php"
                 enctype="multipart/form-data">
                 <div class="d-flex
                     justify-content-center
@@ -102,15 +102,17 @@ if (isset($_SESSION['username'])) {
                         value="<?=$email?>">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">
-                        Semestre </label>
-                    <input type="numeric"
-                    min='0'
-                    max='8'
-                        class="form-control"
-                        name="semester"
-                        id="semester"
-                        value="<?=$semester?>">
+                    <select class="form-control" name="semester">
+				        <option value="">Selecciona un semestre...</option>
+                        <?php
+                            for ($i = 1; $i <= 12; $i++){
+                                if($semester == $i)
+                                    echo '<option value="'. $i . '" selected>'. $i . '</option>';
+                                else
+                                    echo '<option value="'. $i . '">'. $i . '</option>';
+                            }
+                        ?>
+			        </select>
                 </div>
                 <?php }?>
 

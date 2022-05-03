@@ -11,7 +11,7 @@ class Messages
  const ERR_USER_NOT_FOUND                 = "El usuario %s no ha sido encontrado";
  const ERR_NAME_REQUIRED                  = "El nombre es requerido";
  const ERR_LAST_NAME_REQUIRED             = "Los apellidos son requeridos";
- const ERR_SEMESTER_REQUIRED              = "El semestre es requeridos";
+ const ERR_SEMESTER_REQUIRED              = "El semestre es requerido";
  const ERR_ENROLLMENT_REQUIRED            = "El número de control es requerido";
  const ERR_FORMAT_ENROLLMENT              = "El número de control está formado únicamente por 8 dígitos";
  const ERR_PASSWORD_REQUIRED              = "La contraseña es requerida";
