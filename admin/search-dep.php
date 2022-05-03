@@ -115,15 +115,6 @@
 
                 <div class="mb-3">
                     <label class="form-label">
-                        Tel&eacute;fono</label>
-                    <input type="tel"
-                        id="phone"
-                        name="phone"
-                        class="form-control">
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">
                         Jefe de departamento</label>
                     <input type="text"
                         id="boss"
@@ -162,7 +153,6 @@
             $("#email-dep").val('');
             $("#department").val('');
             $('#info').val('');
-            $('#phone').val('');
             $('#boss').val('');
         }
 
@@ -247,7 +237,6 @@
                         $('#email-dep').val(result[0].email);
                         $('#department').val(result[0].department_name);
                         $('#info').val(result[0].info);
-                        $('#phone').val(result[0].tel);
                         $('#boss').val(result[0].department_head);
                     }else{
 						/* Al no obtener resultado, se vacía el formulario */
@@ -272,7 +261,6 @@
             $email = $.trim($('#email-dep').val());
             $department = $.trim($('#department').val());
             $info = $.trim($('#info').val());
-            $phone = $.trim($('#phone').val());
             $boss = $.trim($('#boss').val());
 
             /* Verificando espacios vacíos */
@@ -296,26 +284,21 @@
                 $("#error").css('display', 'block');
                 $("#error").text('La información del departamento no puede estar vacía.');
                 hideErrorMsg();
-            }else if($phone == ''){
-                /* Se muestra el mensaje de error */
-                $("#error").css('display', 'block');
-                $("#error").text('El teléfono no puede estar vacío.');
-                hideErrorMsg();
             }else if($boss == ''){
                 /* Se muestra el mensaje de error */
                 $("#error").css('display', 'block');
                 $("#error").text('El jede del departamento no puede estar vacío.');
                 hideErrorMsg();
             }else
-                updateDep($username, $email, $department, $info, $phone, $boss);
+                updateDep($username, $email, $department, $info, $boss);
         });
 
-        function updateDep($username, $email, $department, $info, $phone, $boss){
+        function updateDep($username, $email, $department, $info, $boss){
 			/* Obteniendo el id del departamento */
 			$id_dep= $("#id-dep").val();
 
 			/* Otra forma de enviar los datos a través de HTTP */
-			$data = 'username='+$username+'&email='+$email+'&department='+$department+'&info='+$info+'&phone='+$phone+'&boss='+$boss+'&id-dep='+$id_dep;
+			$data = 'username='+$username+'&email='+$email+'&department='+$department+'&info='+$info+'&boss='+$boss+'&id-dep='+$id_dep;
 
 			$.ajax({
 				type: "POST",

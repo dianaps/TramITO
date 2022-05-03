@@ -81,7 +81,7 @@
             <a class="nav-link" href="departamentos.php">Departamentos</a>
           </li>
            <li class="nav-item">
-            <a class="nav-link" href="update-password.php">Mi perfil</a>
+            <a class="nav-link" href="profile.php">Mi perfil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="about.php">Contacto</a>

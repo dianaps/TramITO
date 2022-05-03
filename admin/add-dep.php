@@ -73,10 +73,6 @@
                         $info = $_GET['info'];
                     }else $info = '';
 
-                    if (isset($_GET['phone'])) {
-                        $phone = $_GET['phone'];
-                    }else $phone = '';
-
                     if (isset($_GET['boss'])) {
                         $boss = $_GET['boss'];
                     }else $boss = '';
@@ -138,18 +134,6 @@
                     <textarea name="info"
                         class="form-control"
                         id="info"><?=$info?></textarea>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">
-                        Tel&eacute;fono</label>
-                    <input type="tel"
-                        id="phone"
-                        name="phone"
-                        value="<?=$phone?>"
-                        maxlength="10"
-                        placeholder="Ejemplo: 2721594785"
-                        class="form-control">
                 </div>
 
                 <div class="mb-3">
