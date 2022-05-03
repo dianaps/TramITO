@@ -70,6 +70,8 @@ if (!isset($_SESSION['username'])) {
 		</form>
 		<br>
 		<a href="restore-password.php">¿Olvidó su contraseña?</a>
+		<br><br>
+		<a href="index-admin.php">¿Eres administrador?</a>
 	 </div>
 </body>
 </html>
