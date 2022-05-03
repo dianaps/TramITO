@@ -9,6 +9,7 @@ if (isset($_SESSION['username'])) {
  include '../db.conn.php';
 
  include '../helpers/user.php';
+ include '../constants/messages.php';
  include '../constants/domain.php';
 
  $user = getUser($_SESSION['user_id'], $_SESSION['role'], $conn);
@@ -47,15 +48,15 @@ if (isset($_SESSION['username'])) {
     renaming the image with user's username
     like: username.$img_ex_lc
      */
-    $new_img_name = $username . '.' . $img_ex_lc;
+    $new_img_name = $user['username'] . '.' . $img_ex_lc;
 
     # crating upload path on root directory
     $upload_path     = '../../uploads/';
-    $img_upload_path = $upload_path . $new_img_name;
-    $old_img_path    = $upload_path . $user['p_p'];
+    $img_upload_path = $upload_path . '' . $new_img_name;
+    $old_img_path    = $upload_path . '' . $user['p_p'];
 
     # delete old path image
-    if (file_exists($old_img_path) && $user['p_p'] !== Domain::DEFAULT_P_P) {
+    if (file_exists($old_img_path) && $user['p_p'] != Domain::DEFAULT_P_P) {
      unlink($old_img_path);
     }
 
@@ -64,7 +65,7 @@ if (isset($_SESSION['username'])) {
 
    } else {
     $em = Messages::ERR_INCORRECT_FILE_EXTENSION;
-    header("Location: ../../upd-img.php?error=$em&$data");
+    header("Location: ../../profile.php?error=$em");
     exit;
    }
   }
@@ -75,20 +76,23 @@ if (isset($_SESSION['username'])) {
 
   # inserting data into database
   $sql = "UPDATE users
-                        SET (p_p)
-                        VALUES (?)
-                        WHERE user_id = ?";
+            SET p_p = ?
+            WHERE username = ?";
   $stmt = $conn->prepare($sql);
-  $stmt->execute([$new_img_name, $_SESSION['user_id']]);
+  $stmt->execute([$new_img_name, $user['username']]);
 
+  # success message
+  $sm = 'Imagen actualizada';
+
+  # redirect to 'profile.php' and passing success message
+  header("Location: ../../profile.php?success=$sm");
+  exit;
  }
 
- # success message
- $sm = Messages::SCS_CREATION_ACCOUNT;
-
- # redirect to 'profile.php' and passing success message
- header("Location: ../../profile.php?success=$sm");
+ $em = Messages::ERR_UPDATE_PROFILE_PICTURE;
+ header("Location: ../../profile.php?error=$em");
  exit;
+
 } else {
  header("Location: ../../profile.php");
  exit;
