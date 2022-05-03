@@ -113,13 +113,7 @@ if (isset($_SESSION['username'])) {
                         id="semester"
                         value="<?=$semester?>">
                 </div>
-                <button type="submit"
-                    id="update"
-                    class="btn btn-primary">
-                    Actualizar</button>
-                <a href="profile.php">Cancelar</a>
-            </form>
-            <?php }?>
+                <?php }?>
 
             <?php if ($_SESSION['role'] == 'department') {
 
@@ -130,88 +124,62 @@ if (isset($_SESSION['username'])) {
   $info            = $user['info'];
   $boss            = $user['department_head'];
   ?>
+  <div class="mb-3">
+                        <label class="form-label">
+                            Usuario</label>
+                        <input type="text"
+                            class="form-control"
+                            name="username"
+                            id="username"
+                            value="<?=$user['username']?>">
+                    </div>
 
-            <form method="post"
-                action="app/http/upd-info-dep.php"
-                enctype="multipart/form-data">
-                <div class="d-flex
-                    justify-content-center
-                    align-items-center
-                    flex-column">
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Correo electrónico</label>
+                        <input type="email"
+                            class="form-control"
+                            name="email-dep"
+                            id="email-dep"
+                            value="<?=$user['email']?>">
+                    </div>
 
-                <img src="img/logo-buho.png"
-                     class="w-25">
-                </div>
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Departamento</label>
+                        <input type="text"
+                            id="department"
+                            name="department"
+                            class="form-control"
+                            value="<?=$user['department_name']?>">
+                    </div>
 
-                <!-- Mensaje de error -->
-                <?php if (isset($_GET['error'])) {?>
-	 		        <div class="alert alert-warning" role="alert">
-			    <?php echo htmlspecialchars($_GET['error']); ?>
-			        </div>
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Informaci&oacute;n</label>
+                        <textarea name="info"
+                            class="form-control"
+                            id="info"><?=$user['info']?></textarea>
+                    </div>
 
-                <!-- Mensaje de éxito -->
-			    <?php }if (isset($_GET['success'])) {?>
-	 		        <div class="alert alert-success" role="alert">
-			    <?php echo htmlspecialchars($_GET['success']); ?>
-			        </div>
-			    <?php }?>
-
-
-                <div class="mb-3">
-                    <label class="form-label">
-                        Usuario</label>
-                    <input type="text"
-                        class="form-control"
-                        name="username"
-                        id="username"
-                        value="<?=$username?>">
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">
-                        Correo electrónico</label>
-                    <input type="email"
-                        class="form-control"
-                        name="email-dep"
-                        id="email-dep"
-                        value="<?=$email?>">
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">
-                        Departamento</label>
-                    <input type="text"
-                        id="department"
-                        name="department"
-                        class="form-control"
-                        value="<?=$department_name?>">
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">
-                        Informaci&oacute;n</label>
-                    <textarea name="info"
-                        class="form-control"
-                        id="info"><?=$info?></textarea>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">
-                        Jefe de departamento</label>
-                    <input type="text"
-                        id="boss"
-                        name="boss"
-                        class="form-control"
-                        value="<?=$boss?>">
-                </div>
-
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Jefe de departamento</label>
+                        <input type="text"
+                            id="boss"
+                            name="boss"
+                            class="form-control"
+                            value="<?=$user['department_head']?>">
+                    </div>
+<?php
+}
+ ?>
                 <button type="submit"
                     id="update"
                     class="btn btn-primary">
                     Actualizar</button>
                 <a href="profile.php">Cancelar</a>
             </form>
-            <?php }?>
 		</div>
     </div>
 </body>

@@ -24,8 +24,8 @@ class Messages
  const ERR_USERNAME_ALREADY_EXISTS        = "Este usuario ya ha sido registrado, verifique su número de control";
  const ERR_EMAIL_ALREADY_EXISTS           = "Este correo electrónico ya ha sido registrado";
  const ERR_INCORRECT_USERNAME_OR_EMAIL    = "El usuario o el email son incorrectos";
- const ERR_UPDATE_PROFILE_PICTURE         = 'Ocurrió un error al subir la imagen de perfil';
  const SCS_INFO_UPDATE                    = "La información se ha actualizado correctamente";
+ const ERR_UPDATE_PROFILE_PICTURE         = 'Ocurrió un error al subir la imagen de perfil';
 
  // UPDATE PASSWORD
  const ERR_CURRENT_PASSWORD_REQUIRED    = "La contraseña actual es requerida";

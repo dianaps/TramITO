@@ -38,7 +38,6 @@
     </div>
 </form>
 
-
 <?php
 session_start();
 
@@ -105,12 +104,10 @@ if (isset($_SESSION['user_id'])) {
                         <!-- <label class="form-label">
                             Foto de perfil</label> -->
                         <img class="profile-picture" src="uploads/<?=$user['p_p']?>" alt="">
-                        <button
-                        type="button"
-                        class="profile-picture btn btn-link"
-                        data-bs-toggle="modal"
-                        data-bs-target="#updateProfilePictureModal"
-                        >
+                        <button type="button"
+                            class="profile-picture btn btn-link"
+                            data-bs-toggle="modal"
+                            data-bs-target="#updateProfilePictureModal">
                             <span class="fa fa-upload"></span>
                         </button>
                     </div>
@@ -120,23 +117,19 @@ if (isset($_SESSION['user_id'])) {
                     <label class="form-label">
                         <dt>Nombre:</dt>
 						<p class="text-muted"><?php echo $user['name'] . " " . $user['last_name'] ?></p>
-					</label>
-					<br>
+					</label><br>
 
                     <label class="form-label">
 						<dt>N&uacute;mero de control:</dt><p class="text-muted"><?=$user['username']?></p>
-					</label>
-					<br>
+					</label><br>
 
                     <label class="form-label">
 						<dt>Email:</dt><p class="text-muted"><?=$user['email']?></p>
-					</label>
-					<br>
+					</label><br>
 
 					<label class="form-label">
 						<dt>Carrera:</dt><p class="text-muted"><?=$user['career']?></p>
-					</label>
-					<br>
+					</label><br>
 
 					<label class="form-label">
 						<dt>Semestre:</dt><p class="text-muted"><?=$user['semester']?></p>
@@ -147,23 +140,19 @@ if (isset($_SESSION['user_id'])) {
 						<label class="form-label">
                         <dt>Departamento:</dt>
 						<p class="text-muted"><?=$user['department_name']?></p>
-					</label>
-					<br>
+					</label><br>
 
                     <label class="form-label">
 						<dt>Nombre de usuario:</dt><p class="text-muted"><?=$user['username']?></p>
-					</label>
-					<br>
+					</label><br>
 
                     <label class="form-label">
 						<dt>Email:</dt><p class="text-muted"><?=$user['email']?></p>
-					</label>
-					<br>
+					</label><br>
 
 					<label class="form-label">
 						<dt>Descripci&oacute;n:</dt><p class="text-muted"><?=$user['info']?></p>
-					</label>
-					<br>
+					</label><br>
 
 					<label class="form-label">
 						<dt>Jefe de departamento:</dt><p class="text-muted"><?=$user['department_head']?></p>
