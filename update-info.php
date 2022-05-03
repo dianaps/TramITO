@@ -38,6 +38,7 @@
             <?php if ($_SESSION['role'] === 'student' && $user['role'] === 'student'){ ?>
 
             
+            <!-- Si es departamento -->
             <?php } else if ($_SESSION['role'] === 'department' && $user['role'] === 'department'){?>
                 <form method="post"
                     action="app/http/upd-info-dep.php"
