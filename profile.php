@@ -172,7 +172,14 @@ if (isset($_SESSION['user_id'])) {
 					<?php
 }
  ?>
-
+<div class="mb-3">
+                        <a href="update-info.php"
+                            class="btn btn-primary">Actualizar informaci&oacute;n</a>
+                    </div>
+                    <div class="mb-3">
+                        <a href="update-password.php"
+                         class="btn btn-primary">Actualizar contrase&ntilde;a</a>
+                    </div>
                 </div>
         </div>
     </div>
