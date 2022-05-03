@@ -36,7 +36,6 @@ if (isset($_SESSION['username'])) {
              align-items-center">
         <div class="w-400 p-5 shadow rounded">
 
-
         <form method="post"
                 action="app/http/upd-info-dep.php"
                 enctype="multipart/form-data">
