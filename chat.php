@@ -9,13 +9,20 @@ if (isset($_SESSION['username'])) {
  include 'app/helpers/timeAgo.php';
  include 'app/constants/messages.php';
 
- if (!isset($_GET['user']) || !isset($_GET['role'])) {
+ if (!isset($_GET['user'])) {
   header("Location: home.php");
   exit;
  }
 
+//  Para evitar cambio de url
+ if ($_SESSION['role'] === 'student') {
+  $chatWithRole = 'department';
+ } else if ($_SESSION['role'] === 'department') {
+  $chatWithRole = 'student';
+ }
+
  # Getting User data data
- $chatWith = getUser($_GET['user'], $_GET['role'], $conn);
+ $chatWith = getUser($_GET['user'], $chatWithRole, $conn);
  if (empty($chatWith)) {
   header("Location: home.php");
   exit;
@@ -31,13 +38,9 @@ if (isset($_SESSION['username'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TramITO</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-	<link rel="stylesheet"
-	      href="css/style.css">
-	<link rel="icon" href="img/logo-buho.png">
+    <!-- Etiquetas de Head que se repiten -->
+    <?php include "sections/head-tags.php"?>
+    <title>TramITO - Chat</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://kit.fontawesome.com/66b2a98c0c.js" crossorigin="anonymous"></script>
 </head>

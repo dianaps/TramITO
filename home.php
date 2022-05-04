@@ -81,7 +81,7 @@ if ($_SESSION['role'] == 'student') {
 					<?php if (!empty($conversations)) {?>
 						<?php foreach ($conversations as $conversation) {?>
 						<li class="list-group-item">
-							<a href="chat.php?user=<?=$conversation['user_id']?>&role=<?=$conversation['role']?>"
+							<a href="chat.php?user=<?=$conversation['user_id']?>"
 							class="d-flex
 							justify-content-between
 							align-items-center p-2">

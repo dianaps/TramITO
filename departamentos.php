@@ -71,7 +71,7 @@ if ($_SESSION['role'] === 'student') {
 							class="card-footer"
 							style="background: inherit; border-color: inherit"
 						>
-							<a href="chat.php?user=<?=$department['user_id']?>&role=department" class="btn btn-primary">Chat</a>
+							<a href="chat.php?user=<?=$department['user_id']?>" class="btn btn-primary">Chat</a>
 						</div>
 						<?php
 }
