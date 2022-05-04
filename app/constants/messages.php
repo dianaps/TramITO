@@ -21,11 +21,12 @@ class Messages
  const ERR_INCORRECT_USERNAME_OR_PASSWORD = "El usuario o la contraseña son incorrectos";
  const ERR_INCORRECT_FILE_EXTENSION       = "Solo se admiten archivos JPG, JPEG y PNG";
  const ERR_UNKNOWN_ANSWER                 = "Lo siento, no he logrado entenderte";
- const ERR_USERNAME_ALREADY_EXISTS        = "Este usuario ya ha sido registrado, verifique su número de control";
+ const ERR_USERNAME_ALREADY_EXISTS        = "Este usuario ya ha sido registrado";
  const ERR_EMAIL_ALREADY_EXISTS           = "Este correo electrónico ya ha sido registrado";
  const ERR_INCORRECT_USERNAME_OR_EMAIL    = "El usuario o el email son incorrectos";
  const SCS_INFO_UPDATE                    = "La información se ha actualizado correctamente";
  const ERR_UPDATE_PROFILE_PICTURE         = 'Ocurrió un error al subir la imagen de perfil';
+ const ERR_EMAIL_SENT                     = "Hubo un error al enviar la nueva contraseña.";
 
  // UPDATE PASSWORD
  const ERR_CURRENT_PASSWORD_REQUIRED    = "La contraseña actual es requerida";
@@ -40,6 +41,7 @@ class Messages
  const SCS_CREATION_ACCOUNT    = "Cuenta creada exitosamente";
  const SCS_CREATION_DEPARTMENT = "Departamento creado exitosamente";
  const SCS_CREATION_ADMIN      = "El administrador se ha registrado correctamente";
+ const SCS_EMAIL_SENT          = "Se ha enviado una nueva contraseña al correo propocionado.";
 
  // ADMIN
  const ERR_USERNAME_REQUIRED                  = "El nombre de usuario es requerido";
