@@ -2,26 +2,20 @@
 session_start();
 
 if (isset($_SESSION['username'])) {
-	# database connection file
-	include 'app/db.conn.php';
+ # database connection file
+ include 'app/db.conn.php';
 
-	include 'app/helpers/user.php';
-	include 'app/helpers/chat.php';
-	include 'app/helpers/opened.php';
+ include 'app/helpers/user.php';
+ include 'app/helpers/chat.php';
+ include 'app/helpers/opened.php';
 
-	include 'app/helpers/timeAgo.php';
+ include 'app/helpers/timeAgo.php';
  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Home</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-	<link rel="stylesheet"
-	      href="css/style.css">
-	<link rel="icon" href="img/logo-buho.png">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<?php include "sections/head-tags.php"?>
+	<title>TramITO - Chatbot</title>
 </head>
 <body class="">
 
@@ -52,12 +46,12 @@ if (isset($_SESSION['username'])) {
 					<p class="ltext border
 						rounded p-2 mb-1">
 						<?php echo '¡Hola! Soy XoochBot, bienvenido a TramITO ¿Cómo puedo ayudarte?' .
-							'Recuerda utilizar únicamente palabras clave al hacer tus preguntas.'; ?>
+  'Recuerda utilizar únicamente palabras clave al hacer tus preguntas.'; ?>
 						<small class="d-block">
 							<?php
-								# Para establecer un formato de 24h la 'H' debe ser mayúscula
-								echo date("Y-m-d H:i:s");
-							?>
+# Para establecer un formato de 24h la 'H' debe ser mayúscula
+ echo date("Y-m-d H:i:s");
+ ?>
 						</small>
 					</p>
 			</div>
@@ -73,7 +67,7 @@ if (isset($_SESSION['username'])) {
 			</div>
 		</div>
 	</div>
- 	
+
 <!-- ChatBot -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- JavaScript Bundle with Popper -->
@@ -167,7 +161,7 @@ if (isset($_SESSION['username'])) {
  </body>
 </html>
 <?php } else {
-	header("Location: index.php");
- 	exit;
-	}
+ header("Location: index.php");
+ exit;
+}
 ?>

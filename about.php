@@ -1,15 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TramITO - Contacto</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-	<link rel="stylesheet"
-	      href="css/style.css">
-	<link rel="icon" href="img/logo-buho.png">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Yusei+Magic&display=swap" rel="stylesheet">
+    <?php include "sections/head-tags.php"?>
+    <title>TramITO - Contacto</title>
 </head>
 <body>
     <?php include "sections/header.php"?>
@@ -20,12 +13,12 @@
 
 		<div class="middle-container">
 
-		<h5 class="p-4 shadow p-4 mb-5 bg-info rounded" style="text-align: justify;">TramITO fue propuesto por 5 
-			 estudiantes de la carrera de Ing. Sistemas Computacionales, la propuesta surge de una actividad en la materia 
+		<h5 class="p-4 shadow p-4 mb-5 bg-info rounded" style="text-align: justify;">TramITO fue propuesto por 5
+			 estudiantes de la carrera de Ing. Sistemas Computacionales, la propuesta surge de una actividad en la materia
 			 de taller de investigación sobre encontrar una problemática en nuestro entorno, con el propósito de crear
-			 un sistema con el cual se reduciera el tiempo de espera de los trámites administrativos de los alumnos 
-			 del Instituto Tecnológico de Orizaba. El mes de marzo fue facilitado este espacio para mostrar TramITO 
-			 ya que representa una ventaja para el personal administrativo de la institución, por lo tanto las solicitudes 
+			 un sistema con el cual se reduciera el tiempo de espera de los trámites administrativos de los alumnos
+			 del Instituto Tecnológico de Orizaba. El mes de marzo fue facilitado este espacio para mostrar TramITO
+			 ya que representa una ventaja para el personal administrativo de la institución, por lo tanto las solicitudes
 			 emitidas por los estudiantes serían reducidas y así se podría tener un mejor control de la información.</h5>
 
 	<div class="v">
@@ -33,7 +26,7 @@
         <source src="img/presentacion.mp4">
 	</video>
 	</div>
-	
+
 	<div class="v1 abs-center">
 	<form class=" shadow p-4 rounded"  action="mailto:grupotramito@gmail.com" id="form" method='POST' enctype="text/plain">
 	<div class="col1">
