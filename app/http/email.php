@@ -41,6 +41,7 @@ function sendMail($email, $new_password)
 
   //Content
   $mail->isHTML(true); //Set email format to HTML
+  $mail->CharSet = 'UTF-8'; // Activa la condificacción utf-8
   $mail->Subject = $subject;
   $mail->Body    = $body;
   $mail->AltBody = $altBody;
