@@ -108,4 +108,5 @@
     hamburguerMenu.classList.toggle('active');
   };
   hamburguerMenu.addEventListener('click', menuIsActive);
+  hamburguerMenu.addEventListener('change', menuIsActive);
 </script>
