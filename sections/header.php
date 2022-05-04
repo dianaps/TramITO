@@ -71,8 +71,11 @@
           <li class="nav-item logo-image-buho">
               <a class="nav-link" aria-current="page" href="home.php"><img src="img/logo-buho.png" class="img-fluid"></a>
           </li>
-          <li class="nav-item logo-image-nombre">
+          <!-- <li class="nav-item logo-image-nombre">
               <a class="nav-link" aria-current="page" href="home.php"><img src="img/logo-nombre.png" class="img-fluid"></a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="home.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="chatbot.php">Chatbot</a>
