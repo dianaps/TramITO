@@ -36,11 +36,12 @@ if (isset($_SESSION['username'])) {
 
  ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <!-- Etiquetas de Head que se repiten -->
     <?php include "sections/head-tags.php"?>
     <title>TramITO - Chat</title>
+	<!-- iconos de fontawesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://kit.fontawesome.com/66b2a98c0c.js" crossorigin="anonymous"></script>
 </head>
