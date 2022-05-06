@@ -17,7 +17,7 @@
         justify-content-center
         align-items-center
         vh-100">
-        <div class="w-400 p-5 shadow rounded">
+        <div class="w-responsive p-5 shadow rounded">
             <form method="post"
                 action="app/http/upd-pass.php"
                 enctype="multipart/form-data">
@@ -43,23 +43,23 @@
                     </div>
 
                 <?php }if (isset($_GET['current_password'])) {
-                    $current_password = $_GET['current_password'];
-                    } else {
-                    $current_password = '';
-                    }
+ $current_password = $_GET['current_password'];
+} else {
+ $current_password = '';
+}
 
-                    if (isset($_GET['new_password'])) {
-                    $new_password = $_GET['new_password'];
-                    } else {
-                    $new_password = '';
-                    }
+if (isset($_GET['new_password'])) {
+ $new_password = $_GET['new_password'];
+} else {
+ $new_password = '';
+}
 
-                    if (isset($_GET['conf_password'])) {
-                    $conf_password = $_GET['conf_password'];
-                    } else {
-                    $conf_password = '';
-                    }
-                ?>
+if (isset($_GET['conf_password'])) {
+ $conf_password = $_GET['conf_password'];
+} else {
+ $conf_password = '';
+}
+?>
 
                 <div class="mb-3">
                     <label class="form-label">

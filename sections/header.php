@@ -13,7 +13,8 @@
     border-bottom: 1px solid rgba(44, 45, 42, 0.25);
     top: 0;
     left: 0;
-    background-color: var(--beach-bg);
+    /* background-color: #084299; */
+    /* background-color: var(--beach-bg); */
     z-index: 10;
   }
   .hamburguer{

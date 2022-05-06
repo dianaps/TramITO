@@ -14,7 +14,7 @@ if (!isset($_SESSION['username'])) {
              justify-content-center
              align-items-center
              vh-100">
-	 <div class="w-400 p-5 shadow rounded">
+	 <div class="w-responsive p-5 shadow rounded">
 	 	<form method="post"
 	 	      action="app/http/recover.php">
 	 		<div class="d-flex

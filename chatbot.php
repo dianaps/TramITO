@@ -2,15 +2,15 @@
 session_start();
 
 if (isset($_SESSION['username'])) {
- # database connection file
- include 'app/db.conn.php';
+  # database connection file
+  include 'app/db.conn.php';
 
- include 'app/helpers/user.php';
- include 'app/helpers/chat.php';
- include 'app/helpers/opened.php';
+  include 'app/helpers/user.php';
+  include 'app/helpers/chat.php';
+  include 'app/helpers/opened.php';
 
- include 'app/helpers/timeAgo.php';
- ?>
+  include 'app/helpers/timeAgo.php';
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +30,7 @@ if (isset($_SESSION['username'])) {
 	<div class="d-flex
         justify-content-center
         align-items-center">
-		<div class="w-400 shadow p-4 rounded">
+		<div class="w-responsive shadow p-4 rounded">
 			<div class="d-flex align-items-center">
 				<img src="uploads/xoochbot.png"
 					class="w-15 rounded-circle">
@@ -46,12 +46,12 @@ if (isset($_SESSION['username'])) {
 					<p class="ltext border
 						rounded p-2 mb-1">
 						<?php echo '¡Hola! Soy XoochBot, bienvenido a TramITO ¿Cómo puedo ayudarte?' .
-  'Recuerda utilizar únicamente palabras clave al hacer tus preguntas.'; ?>
+    'Recuerda utilizar únicamente palabras clave al hacer tus preguntas.'; ?>
 						<small class="d-block">
 							<?php
 # Para establecer un formato de 24h la 'H' debe ser mayúscula
- echo date("Y-m-d H:i:s");
- ?>
+  echo date("Y-m-d H:i:s");
+  ?>
 						</small>
 					</p>
 			</div>
@@ -161,7 +161,7 @@ if (isset($_SESSION['username'])) {
  </body>
 </html>
 <?php } else {
- header("Location: index.php");
- exit;
+  header("Location: index.php");
+  exit;
 }
 ?>

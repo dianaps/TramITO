@@ -47,7 +47,7 @@ if (isset($_SESSION['username'])) {
 <div class="d-flex
              justify-content-center
              align-items-center">
-    <div class="w-400 shadow p-4 rounded">
+    <div class="m-10 w-responsive shadow p-4 rounded">
     	<a onclick = "window.history.back();"
     	   class="fs-4 link-dark btn"><span class="fa solid fa-arrow-left"></span></a>
 

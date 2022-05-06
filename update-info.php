@@ -29,7 +29,7 @@ if (isset($_SESSION['username'])) {
 	<div class="d-flex
              justify-content-center
              align-items-center">
-        <div class="w-400 p-5 shadow rounded">
+        <div class="w-responsive p-5 shadow rounded">
 
         <form method="post"
                 action="app/http/upd-info.php"
