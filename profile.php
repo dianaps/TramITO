@@ -51,7 +51,7 @@ if (isset($_SESSION['user_id'])) {
 
  ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
 	<?php include "sections/head-tags.php"?>
 	<title>TramITO - Mi Perfil</title>

@@ -8,7 +8,7 @@ if (isset($_SESSION['username'])) {
  $departments = getDepartments($conn);
  ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 	<head>
 		<?php include "sections/head-tags.php"?>
 		<title>TramITO - Departamentos</title>

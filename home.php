@@ -17,7 +17,7 @@ if (isset($_SESSION['username'])) {
     $conversations = getConversation($user['user_id'], $conn);
     ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 	<head>
 		<!-- Etiquetas de Head que se repiten -->
 		<?php include "sections/head-tags.php"?>

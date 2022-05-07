@@ -12,7 +12,7 @@ if (isset($_SESSION['username'])) {
   include 'app/helpers/timeAgo.php';
   ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-MX">
 <head>
 	<?php include "sections/head-tags.php"?>
 	<title>TramITO - Chatbot</title>

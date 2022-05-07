@@ -5,7 +5,7 @@ if (!isset($_SESSION['username'])) {
  ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-MX">
 <head>
 	<?php include "sections/head-tags.php"?>
 	<title>TramITO - Restaurar Contraseña</title>

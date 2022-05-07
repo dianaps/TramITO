@@ -17,7 +17,7 @@ if (isset($_SESSION['username'])) {
 
  ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-MX">
 <head>
 	<!-- PHP 7.4!!! Centos 7 OS, Maria DB 10.4.22??-->
 	<?php include "sections/head-tags.php"?>

@@ -36,7 +36,7 @@ if (isset($_SESSION['username'])) {
 
  ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
     <?php include "sections/head-tags.php"?>
     <title>TramITO - Chat</title>

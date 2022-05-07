@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-MX">
 <head>
 	<?php include "sections/head-tags.php"?>
 	<title>TramITO - Actualizar contraseña</title>
