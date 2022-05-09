@@ -4,20 +4,20 @@ header("Content-Type: text&html;charset=utf-8");
 session_start();
 
 if (isset($_SESSION['username'])) {
- # database connection file
- include 'app/db.conn.php';
- include 'app/helpers/user.php';
- include 'app/helpers/conversations.php';
- include 'app/helpers/timeAgo.php';
- include 'app/helpers/last_chat.php';
- include 'app/constants/messages.php';
+    # database connection file
+    include 'app/db.conn.php';
+    include 'app/helpers/user.php';
+    include 'app/helpers/conversations.php';
+    include 'app/helpers/timeAgo.php';
+    include 'app/helpers/last_chat.php';
+    include 'app/constants/messages.php';
 
- # Getting User data
- $user = getUser($_SESSION['user_id'], $_SESSION['role'], $conn);
+    # Getting User data
+    $user = getUser($_SESSION['user_id'], $_SESSION['role'], $conn);
 
- # Getting User conversations
- $conversations = getConversation($user['user_id'], $conn);
- ?>
+    # Getting User conversations
+    $conversations = getConversation($user['user_id'], $conn);
+    ?>
 <!DOCTYPE html>
 <html lang="es-MX">
 	<head>
@@ -50,15 +50,15 @@ if (isset($_SESSION['username'])) {
 							class="w-25 rounded-circle">
 						<?php
 if ($_SESSION['role'] == 'student') {
-  ?>
+        ?>
 						<h3 class="fs-xs m-2"><?php echo $user['name'] . " " . $user['last_name'] ?></h3>
 						<?php
 } else {
-  ?>
+        ?>
 						<h3 class="fs-xs m-2"><?=$user['department_name']?></h3>
 						<?php
 }
- ?>
+    ?>
 					</div>
 				</div>
 
@@ -89,12 +89,12 @@ if ($_SESSION['role'] == 'student') {
 										<!-- Cambian los campos dependiendo del rol  -->
 										<?php
 $user_extra_data = getUser($conversation['user_id'], $conversation['role'], $conn);
-  if ($_SESSION['role'] == 'student') {
-   echo $user_extra_data['department_name'];
-  } else {
-   echo $user_extra_data['name'] . " " . $user_extra_data['last_name'];
-  }
-  ?>
+        if ($_SESSION['role'] == 'student') {
+            echo $user_extra_data['department_name'];
+        } else {
+            echo $user_extra_data['name'] . " " . $user_extra_data['last_name'];
+        }
+        ?>
 										<br>
 										<small>
 											<?php echo lastChat($_SESSION['user_id'], $conversation['user_id'], $conn); ?>
@@ -119,8 +119,6 @@ $user_extra_data = getUser($conversation['user_id'], $conversation['role'], $con
 				</ul>
 		</div>
     </div>
-
-	<?php include "sections/footer.php"?>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- JavaScript Bundle with Popper -->
@@ -176,7 +174,7 @@ $user_extra_data = getUser($conversation['user_id'], $conversation['role'], $con
 </html>
 <?php
 } else {
- header("Location: index.php");
- exit;
+    header("Location: index.php");
+    exit;
 }
 ?>

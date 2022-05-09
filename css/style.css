@@ -44,6 +44,9 @@ h1, h2, h3, h4, h5, h6{
 .w-400 {
 	width: 400px;
 }
+.w-responsive {
+	width: 400px;
+}
 
 .fs-xs {
 	font-size: 1rem;
@@ -215,25 +218,16 @@ button.profile-picture{
 	.title{
 		width: 40%;
 	}
-	.w-responsive {
-		width: 400px;
-	}
 }
 /* Laptop */
 @media only screen and (max-width: 992px) and (min-width: 769px) {
 	.title{
 		width: 30%;
 	}
-	.w-responsive {
-		width: 400px;
-	}
 }
 /* Large Screen */
 @media only screen and (max-width: 1200px) and (min-width: 993px) {
 	.title{
 		width: 15%;
-	}
-	.w-responsive {
-		width: 400px;
 	}
 }
