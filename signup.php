@@ -1,4 +1,6 @@
 <?php
+header("Content-Type: text&html;charset=utf-8");
+
 session_start();
 
 # Arreglo de las carreras

@@ -1,8 +1,10 @@
 <?php
+header("Content-Type: text&html;charset=utf-8");
+
 session_start();
 
 if (!isset($_SESSION['username'])) {
- ?>
+    ?>
 <!DOCTYPE html>
 <html lang="es-MX">
 <head>
@@ -72,7 +74,7 @@ if (!isset($_SESSION['username'])) {
 </html>
 <?php
 } else {
- header("Location: home.php");
- exit;
+    header("Location: home.php");
+    exit;
 }
 ?>

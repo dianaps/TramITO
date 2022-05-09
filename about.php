@@ -1,3 +1,4 @@
+<?php header("Content-Type: text&html;charset=utf-8"); ?>
 <!DOCTYPE html>
 <html lang="es-MX">
 <head>
@@ -14,7 +15,7 @@
 		<div class="middle-container">
 
 		<h5 class="p-4 shadow p-4 mb-5 bg-info rounded" style="text-align: justify;">TramITO fue propuesto por 5
-			 estudiantes de la carrera de Ing. Sistemas Computacionales, la propuesta surge de una actividad en la materia
+			 estudiantes de la carrera de Ing. Sistemas Computacionales. La propuesta surge de una actividad en la materia
 			 de taller de investigación sobre encontrar una problemática en nuestro entorno, con el propósito de crear
 			 un sistema con el cual se reduciera el tiempo de espera de los trámites administrativos de los alumnos
 			 del Instituto Tecnológico de Orizaba. El mes de marzo fue facilitado este espacio para mostrar TramITO

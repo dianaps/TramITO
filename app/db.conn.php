@@ -13,10 +13,9 @@ $db_name = "tramito";
 
 #creating database connection
 try {
- $conn = new PDO("mysql:host=$sName;dbname=$db_name",
+ $conn = new PDO("mysql:host=$sName;dbname=$db_name;charset=utf8",
   $uName, $pass);
  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
- mysqli_set_charset($conn, "utf8");
 } catch (PDOException $e) {
  echo "Connection failed : " . $e->getMessage();
 }

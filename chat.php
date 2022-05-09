@@ -1,4 +1,5 @@
 <?php
+header("Content-Type: text&html;charset=utf-8");
 session_start();
 if (isset($_SESSION['username'])) {
  # database connection file
@@ -126,76 +127,77 @@ if (!empty($chats)) {
     	   </div>
 
     </div>
-
-
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-<script>
-	var scrollDown = function(){
-        let chatBox = document.getElementById('chatBox');
-        chatBox.scrollTop = chatBox.scrollHeight;
-	}
-
-	scrollDown();
-
-	$(document).ready(function(){
-
-      $("#sendBtn").on('click', function(){
-      	message = $("#message").val();
-      	if (message == "") return;
-
-      	$.post("app/ajax/insert.php",
-      		   {
-      		   	message: message,
-      		   	to_id: <?=$chatWith['user_id']?>
-      		   },
-      		   function(data, status){
-                  $("#message").val("");
-                  $("#chatBox").append(data);
-                  scrollDown();
-      		   });
-      });
-
-      /**
-      auto update last seen
-      for logged in user
-      **/
-      let lastSeenUpdate = function(){
-      	$.get("app/ajax/update_last_seen.php");
-      }
-      lastSeenUpdate();
-      /**
-      auto update last seen
-      every 10 sec
-      **/
-      setInterval(lastSeenUpdate, 10000);
-
-
-
-      // auto refresh / reload
-      let fechData = function(){
-      	$.post("app/ajax/getMessage.php",
-      		   {
-      		   	id_2: <?=$chatWith['user_id']?>
-      		   },
-      		   function(data, status){
-                  $("#chatBox").append(data);
-                  if (data != "") scrollDown();
-      		    });
-      }
-
-      fechData();
-      /**
-      auto update last seen
-      every 0.5 sec
-      **/
-      setInterval(fechData, 500);
-
-    });
-</script>
 </div>
+
+	<?php include "sections/footer.php"?>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+	<script>
+		var scrollDown = function(){
+			let chatBox = document.getElementById('chatBox');
+			chatBox.scrollTop = chatBox.scrollHeight;
+		}
+
+		scrollDown();
+
+		$(document).ready(function(){
+
+		$("#sendBtn").on('click', function(){
+			message = $("#message").val();
+			if (message == "") return;
+
+			$.post("app/ajax/insert.php",
+				{
+					message: message,
+					to_id: <?=$chatWith['user_id']?>
+				},
+				function(data, status){
+					$("#message").val("");
+					$("#chatBox").append(data);
+					scrollDown();
+				});
+		});
+
+		/**
+		 auto update last seen
+		for logged in user
+		**/
+		let lastSeenUpdate = function(){
+			$.get("app/ajax/update_last_seen.php");
+		}
+		lastSeenUpdate();
+		/**
+		 auto update last seen
+		every 10 sec
+		**/
+		setInterval(lastSeenUpdate, 10000);
+
+
+
+		// auto refresh / reload
+		let fechData = function(){
+			$.post("app/ajax/getMessage.php",
+				{
+					id_2: <?=$chatWith['user_id']?>
+				},
+				function(data, status){
+					$("#chatBox").append(data);
+					if (data != "") scrollDown();
+					});
+		}
+
+		fechData();
+		/**
+		 auto update last seen
+		every 0.5 sec
+		**/
+		setInterval(fechData, 500);
+
+		});
+	</script>
  </body>
  </html>
 <?php
