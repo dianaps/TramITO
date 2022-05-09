@@ -1,7 +1,7 @@
-<!-- Modal -->
 <?php
 header("Content-Type: text&html;charset=utf-8");
 ?>
+<!-- Modal -->
 <form method="post"
     action="app/http/upd-img.php"
     enctype="multipart/form-data">
