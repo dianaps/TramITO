@@ -1,7 +1,27 @@
 <?php
 header("Content-Type: text&html;charset=utf-8");
-?>
-<!-- Modal -->
+
+session_start();
+
+if (isset($_SESSION['user_id'])) {
+
+ include 'app/helpers/user.php';
+ # Realizando la conexión con la BD
+ include 'app/db.conn.php';
+
+ $user = getUser($_SESSION['user_id'], $_SESSION['role'], $conn);
+
+ ?>
+
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+	<?php include "sections/head-tags.php"?>
+	<title>TramITO - Mi Perfil</title>
+</head>
+
+<body>
+    <!-- Modal -->
 <form method="post"
     action="app/http/upd-img.php"
     enctype="multipart/form-data">
@@ -41,26 +61,6 @@ header("Content-Type: text&html;charset=utf-8");
     </div>
 </form>
 
-<?php
-session_start();
-
-if (isset($_SESSION['user_id'])) {
-
- include 'app/helpers/user.php';
- # Realizando la conexión con la BD
- include 'app/db.conn.php';
-
- $user = getUser($_SESSION['user_id'], $_SESSION['role'], $conn);
-
- ?>
-<!DOCTYPE html>
-<html lang="es-MX">
-<head>
-	<?php include "sections/head-tags.php"?>
-	<title>TramITO - Mi Perfil</title>
-</head>
-
-<body>
 	<?php include "sections/header.php";?>
 	<!-- Encabezado -->
 	<div class="p-5 text-center bg-light">

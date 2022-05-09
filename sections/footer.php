@@ -1,10 +1,9 @@
-<?php header("Content-Type: text&html;charset=utf-8");
-?>
 <style>
 .bottom-container{
 	background-color: #66BFBF;
 	padding: 20px;
     text-align: center;
+    bottom:0;
   }
 
 .footer-link{
