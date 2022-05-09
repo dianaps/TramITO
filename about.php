@@ -1,4 +1,4 @@
-<?php header("Content-Type: text&html;charset=utf-8"); ?>
+<?php header("Content-Type: text&html;charset=utf-8");?>
 <!DOCTYPE html>
 <html lang="es-MX">
 <head>
@@ -15,12 +15,12 @@
 		<div class="middle-container">
 
 		<h5 class="p-4 shadow p-4 mb-5 bg-info rounded" style="text-align: justify;">TramITO fue propuesto por 5
-			 estudiantes de la carrera de Ing. Sistemas Computacionales. La propuesta surge de una actividad en la materia
-			 de taller de investigación sobre encontrar una problemática en nuestro entorno, con el propósito de crear
-			 un sistema con el cual se reduciera el tiempo de espera de los trámites administrativos de los alumnos
-			 del Instituto Tecnológico de Orizaba. El mes de marzo fue facilitado este espacio para mostrar TramITO
-			 ya que representa una ventaja para el personal administrativo de la institución, por lo tanto las solicitudes
-			 emitidas por los estudiantes serían reducidas y así se podría tener un mejor control de la información.</h5>
+			 estudiantes de la carrera de Ing. Sistemas Computacionales. La propuesta surge como proyecto para la materia
+			 de taller de investigación, donde debíamos identificar una problemática en nuestro entorno. Nuestra propuesta fue
+			 crear un sistema que ayudara a reducir el tiempo de espera de los trámites administrativos de los alumnos
+			 del Instituto Tecnológico de Orizaba. El mes de marzo fue facilitado este espacio para mostrar el proyecto TramITO.
+			 Se espera que sea beneficioso para el personal administrativo de la institución y para los estudiantes ya que se contará
+			 con un mejor control de la información.</h5>
 
 	<div class="v">
 	<video class= "ratio ratio-4x3" controls muted autoplay preload="auto">
@@ -54,7 +54,4 @@
 	<!-- Jumbotron -->
 	<?php include "sections/footer.php"?>
 </body>
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
 </html>

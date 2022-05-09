@@ -1,4 +1,7 @@
 <!-- Modal -->
+<?php
+header("Content-Type: text&html;charset=utf-8");
+?>
 <form method="post"
     action="app/http/upd-img.php"
     enctype="multipart/form-data">
@@ -39,8 +42,6 @@
 </form>
 
 <?php
-header("Content-Type: text&html;charset=utf-8");
-
 session_start();
 
 if (isset($_SESSION['user_id'])) {
