@@ -1,3 +1,5 @@
+<?php header("Content-Type: text&html;charset=utf-8");
+?>
 <style>
 .bottom-container{
 	background-color: #66BFBF;
